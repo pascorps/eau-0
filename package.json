@@ -1,0 +1,9 @@
+{
+  "name": "eau-0-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Eau 0 - Coupures d'eau en Tunisie (signalements citoyens)",
+  "engines": {
+    "node": ">=18"
+  }
+}
