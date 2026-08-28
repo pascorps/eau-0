@@ -22,8 +22,9 @@ export default async (req) => {
 
     const s = await store();
     const votes = (await s.get('votes', { type: 'json' })) || {};
-    if (!votes[zone]) votes[zone] = { good: 0, bad: 0 };
+    if (!votes[zone]) votes[zone] = { good: 0, bad: 0, status: 'wait' };
     votes[zone][status] = (votes[zone][status] || 0) + 1;
+    votes[zone].status = status;
     await s.set('votes', JSON.stringify(votes));
 
     return Response.json({ ok: true, votes });

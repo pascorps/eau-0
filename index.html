@@ -634,15 +634,32 @@
     }
     function closeVoteModal() { $('voteModal').classList.remove('show'); votingCard = null; }
 
+    function renderCard(card, v) {
+      const base = BASE[card.dataset.name] || { good: 0, bad: 0 };
+      const good = base.good + (v.good || 0);
+      const bad = base.bad + (v.bad || 0);
+      const status = v.status || (good >= bad ? 'good' : 'bad');
+      card.querySelector('.card-meta').innerHTML = (card.dataset.gov || 'Zone') + ' 💧 <b>' + good + '</b> 🚱 <b>' + bad + '</b>';
+      card.dataset.status = status;
+      card.className = 'card' + (status !== 'good' ? ' ' + status : '');
+      card.querySelector('.card-icon').textContent = status === 'good' ? '💧' : status === 'bad' ? '🚱' : '⏳';
+      const el = card.querySelector('.card-status');
+      el.className = 'card-status ' + status;
+      el.textContent = status === 'good' ? 'ça coule' : status === 'bad' ? 'coupée' : 'à vérifier';
+    }
+
     function submitVote(status) {
       if (!votingCard) return;
       const card = votingCard;
       const zone = card.dataset.name;
       closeVoteModal();
-      if (!LOCALV[zone]) LOCALV[zone] = { good: 0, bad: 0 };
+      if (!LOCALV[zone]) LOCALV[zone] = { good: 0, bad: 0, status: 'wait' };
       LOCALV[zone][status]++;
+      LOCALV[zone].status = status;
       saveLocal(LOCALV);
-      applyVotes(LOCALV);
+      renderCard(card, LOCALV[zone]);
+      updateCounts();
+      refresh();
       fetch('/.netlify/functions/report', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -651,42 +668,24 @@
         .then(r => r.json())
         .then(data => {
           if (data.error) { notify('⚠️ ' + data.error); return; }
-          const merged = mergeVotes(LOCALV, data.votes || {});
-          applyVotes(merged);
+          applyVotes(data.votes || {});
           notify('✅ Merci ' + zone + ' — ' + (status === 'good' ? 'ça coule' : 'coupée'));
         })
         .catch(() => { notify('✅ Signalement enregistré (hors connexion)'); });
     }
 
-    function mergeVotes(local, server) {
-      const out = {};
-      const keys = new Set([...Object.keys(local), ...Object.keys(server)]);
-      keys.forEach(k => {
-        const l = local[k] || { good: 0, bad: 0 };
-        const s = server[k] || { good: 0, bad: 0 };
-        out[k] = { good: (l.good || 0) + (s.good || 0), bad: (l.bad || 0) + (s.bad || 0) };
-      });
-      return out;
-    }
-
-    function applyVotes(votes) {
+    function applyVotes(serverVotes) {
       document.querySelectorAll('.card').forEach(card => {
         const zone = card.dataset.name;
-        const v = votes[zone];
-        if (!v) return;
-        const base = BASE[zone] || { good: 0, bad: 0 };
-        const good = base.good + (v.good || 0);
-        const bad = base.bad + (v.bad || 0);
-        card.querySelector('.card-meta').innerHTML = (card.dataset.gov || 'Zone') + ' 💧 <b>' + good + '</b> 🚱 <b>' + bad + '</b>';
-        if (good + bad > 0) {
-          const status = good >= bad ? 'good' : 'bad';
-          card.dataset.status = status;
-          card.className = 'card' + (status !== 'good' ? ' ' + status : '');
-          card.querySelector('.card-icon').textContent = status === 'good' ? '💧' : '🚱';
-          const el = card.querySelector('.card-status');
-          el.className = 'card-status ' + status;
-          el.textContent = status === 'good' ? 'ça coule' : 'coupée';
+        const s = serverVotes[zone];
+        const l = LOCALV[zone] || {};
+        let v = null;
+        if (s) {
+          v = { good: s.good || 0, bad: s.bad || 0, status: s.status || 'wait' };
+        } else if ((l.good || l.bad)) {
+          v = { good: l.good || 0, bad: l.bad || 0, status: l.status || 'wait' };
         }
+        if (v) renderCard(card, v);
       });
       updateCounts();
       refresh();
@@ -716,7 +715,7 @@
       applyVotes(LOCALV);
       fetch('/.netlify/functions/report', { method: 'GET' })
         .then(r => r.json().catch(() => ({})))
-        .then(data => { applyVotes(mergeVotes(LOCALV, (data && data.votes) || {})); })
+        .then(data => { applyVotes((data && data.votes) || {}); })
         .catch(() => {});
     }
 
