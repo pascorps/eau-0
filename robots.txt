@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leafy-vacherin-93e23c.netlify.app/sitemap.xml
