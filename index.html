@@ -109,7 +109,7 @@
       <div class="top-actions"><button class="admin-btn" onclick="showLogin()">⚙ إدارة الموقع</button><span class="lang">عربي</span></div>
     </header>
 
-    <section class="heading"><h1>Famma dhaw ? 💧</h1><p>Découvrez l’état de l’eau dans votre quartier, en temps réel.</p></section>
+    <section class="heading"><h1>eau0 officiel</h1><p>Découvrez l’état de l’eau dans votre quartier, en temps réel.</p></section>
     <div class="water-bar">💧 Eau · حالة التزويد بالماء فقط</div>
     <section class="quick-stats"><div class="stat live"><strong id="liveCount">265</strong><span>ça coule</span></div><div class="stat cut"><strong id="cutCount">88</strong><span>Coupée</span></div><div class="stat wait"><strong id="waitCount">22</strong><span>À vérifier</span></div></section>
 
@@ -638,8 +638,11 @@
       const base = BASE[card.dataset.name] || { good: 0, bad: 0 };
       const good = base.good + (v.good || 0);
       const bad = base.bad + (v.bad || 0);
-      const status = v.status || (good >= bad ? 'good' : 'bad');
       card.querySelector('.card-meta').innerHTML = (card.dataset.gov || 'Zone') + ' 💧 <b>' + good + '</b> 🚱 <b>' + bad + '</b>';
+      let status = v.status;
+      if (status !== 'good' && status !== 'bad') {
+        status = (good + bad) > 0 ? (good >= bad ? 'good' : 'bad') : card.dataset.status;
+      }
       card.dataset.status = status;
       card.className = 'card' + (status !== 'good' ? ' ' + status : '');
       card.querySelector('.card-icon').textContent = status === 'good' ? '💧' : status === 'bad' ? '🚱' : '⏳';
