@@ -141,7 +141,19 @@
     .zone-item button { padding:4px 8px; border:1px solid var(--line); border-radius:7px; background:var(--surface); color:var(--text); font-size:10px; cursor:pointer; }
     .zone-item button.del { color:var(--red); border-color:var(--red-soft); }
     @media (max-width:720px) { .page { width:min(100%,100vw); } .feed { grid-template-columns:repeat(2, 1fr); gap:10px; } .card { min-height:70px; padding:12px 12px; } .card-title { font-size:12px; } }
-    @media (max-width:520px) { .feed { grid-template-columns:1fr; } .page { padding:18px 12px 34px; } .topbar { margin-bottom:22px; } .heading h1 { font-size:23px; } .heading p { font-size:12px; } .card { min-height:82px; padding:14px 14px; gap:12px; } .card-title { font-size:14.5px; } .card-meta { font-size:11px; } .card-status { font-size:10px; padding:7px 11px; } .quick-stats { gap:8px; } .stat { padding:14px; } .stat strong { font-size:28px; } .search { font-size:14px; padding:13px 14px; } .filter { font-size:13px; padding:0 12px; height:44px; } .brand-name { font-size:15px; } .admin-btn { padding:10px 12px; font-size:12px; } }
+    @media (max-width:520px) { .feed { grid-template-columns:1fr; } .page { padding:18px 12px 34px; } .topbar { margin-bottom:22px; } .heading h1 { font-size:23px; } .heading p { font-size:12px; } .card { min-height:82px; padding:14px 14px; gap:12px; } .card-title { font-size:14.5px; } .card-meta { font-size:11px; } .card-status { font-size:10px; padding:7px 11px; } .quick-stats { gap:8px; } .stat { padding:14px; } .stat strong { font-size:28px; } .search { font-size:14px; padding:13px 14px; } .filter { font-size:13px; padding:0 12px; height:44px; } .brand-name { font-size:15px; } .admin-btn { padding:10px 12px; font-size:12px; } .quick-tabs { gap:6px; } .qtab { font-size:13px; padding:11px 10px; } }
+
+    .quick-tabs { display:flex; gap:8px; margin-bottom:14px; overflow-x:auto; padding-bottom:4px; }
+    .qtab { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:13px 12px; border:none; border-radius:14px; cursor:pointer;
+      font-size:13px; font-weight:800; color:var(--text); background:var(--surface); border:1px solid var(--line);
+      transition:transform .15s, background .15s, border-color .15s; white-space:nowrap; }
+    .qtab b { display:inline-grid; place-items:center; min-width:22px; height:22px; padding:0 6px; border-radius:11px; background:rgba(255,255,255,.08); font-size:11px; }
+    .qtab:active { transform:scale(.97); }
+    .qtab.active { color:#03141c; background:var(--blue); border-color:var(--blue); }
+    .qtab.active b { background:rgba(0,0,0,.18); color:#fff; }
+    .qtab.good { border-bottom:3px solid var(--green); } .qtab.good.active { background:var(--green); border-color:var(--green); }
+    .qtab.bad { border-bottom:3px solid var(--red); } .qtab.bad.active { background:var(--red); border-color:var(--red); }
+    .qtab.wait { border-bottom:3px solid var(--yellow); } .qtab.wait.active { background:var(--yellow); border-color:var(--yellow); }
   </style>
 </head>
 <body>
@@ -156,6 +168,12 @@
     <section class="quick-stats"><div class="stat live"><strong id="liveCount">265</strong><span>ماء متوفر</span></div><div class="stat cut"><strong id="cutCount">88</strong><span>مقطوع</span></div><div class="stat wait"><strong id="waitCount">22</strong><span>قيد التحقق</span></div></section>
 
     <div class="section-head"><h2>آخر التحديثات</h2><span id="resultCount">375 منطقة متابعة</span></div>
+    <div class="quick-tabs" id="quickTabs">
+      <button class="qtab active" data-v="all">الكل <b id="qAll">0</b></button>
+      <button class="qtab good" data-v="good">ماء ✔ <b id="qGood">0</b></button>
+      <button class="qtab bad" data-v="bad">مقطوع ✖ <b id="qBad">0</b></button>
+      <button class="qtab wait" data-v="wait">قيد التحقق <b id="qWait">0</b></button>
+    </div>
     <div class="tools"><input class="search" id="search" placeholder="ابحث عن منطقة..." /><select class="filter" id="filter"><option value="all">الكل</option><option value="good">ماء متوفر</option><option value="bad">مقطوع</option><option value="wait">قيد التحقق</option></select></div>
     <section class="feed" id="feed">
 <button class="card" data-name="Bouhsina" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bouhsina</span><span class="card-meta">Sousse 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
@@ -946,6 +964,27 @@
           meta.textContent = (card.dataset.gov || 'Zone') + ' · ✔ ' + good + ' ✖ ' + bad;
         }
       });
+    })();
+
+    (function quickFilter() {
+      if (!$('quickTabs')) return;
+      function syncCounts() {
+        let all = 0, good = 0, bad = 0, wait = 0;
+        document.querySelectorAll('.card').forEach(c => {
+          all++;
+          if (c.dataset.status === 'good') good++; else if (c.dataset.status === 'bad') bad++; else wait++;
+        });
+        $('qAll').textContent = all; $('qGood').textContent = good; $('qBad').textContent = bad; $('qWait').textContent = wait;
+      }
+      document.querySelectorAll('.qtab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.qtab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          $('filter').value = tab.dataset.v;
+          refresh();
+        });
+      });
+      syncCounts();
     })();
   </script>
 </body>
