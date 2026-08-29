@@ -1,387 +1,243 @@
-﻿<!doctype html>
-<html lang="fr" dir="ltr">
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>eau0 — سجلّات انقطاع الماء في تونس</title>
-  <meta name="description" content="eau0 : تتبع حالة المياه في كل ولايات ومناطق تونس. أبلغ عن انقطاع الماء (مقصوص) أو توفر الماء (إما يشق) في منطقتك وراجع التقارير في الوقت الفعلي." />
-  <meta name="keywords" content="eau0, eau 0, coupures d'eau, eau tunisie, انقطاع الماء, ماء تونس, مقصوص على الماء, حالة الماء" />
-  <meta name="author" content="eau0 officiel" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://eau0.netlify.app/" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>شبكة تونس للماء — حالة الماء الآن لحظة بلحظة | eau0</title>
+  <meta name="description" content="تتبع حالة تزويد الماء في حيّك وفي كل مناطق تونس لحظة بلحظة. شبكة المواطنين التونسيين لحالة الماء، ماء متوفر أم مقطوع." />
+  <meta name="keywords" content="ماء تونس, انقطاع الماء, حالة الماء, تزويد الماء, eau0, SONEDE, الإسبوع المائي" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="شبكة تونس للماء — eau0" />
+  <meta property="og:description" content="تتبع حالة تزويد الماء في حيّك وفي كل مناطق تونس لحظة بلحظة." />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="eau0 — سجلّات انقطاع الماء في تونس" />
-  <meta property="og:description" content="أبلغ عن انقطاع الماء أو توفر المياه في منطقتك وراجع تقارير كل مناطق تونس في الوقت الفعلي." />
   <meta property="og:url" content="https://eau0.netlify.app/" />
-  <meta property="og:site_name" content="eau0 officiel" />
+  <meta property="og:image" content="https://eau0.netlify.app/og-image.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="eau0 — سجلّات انقطاع الماء في تونس" />
-  <meta name="twitter:description" content="أبلغ عن انقطاع الماء أو توفر المياه في منطقتك وراجع تقارير كل مناطق تونس." />
+  <meta name="twitter:title" content="شبكة تونس للماء — eau0" />
+  <meta name="twitter:description" content="تتبع حالة تزويد الماء في تونس لحظة بلحظة." />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "eau0",
-    "alternateName": "eau0 officiel",
-    "url": "https://eau0.netlify.app/"
+    "name": "شبكة تونس للماء",
+    "url": "https://eau0.netlify.app/",
+    "inLanguage": "ar"
   }
   </script>
   <style>
     :root {
-      --bg:#080d11; --surface:#121920; --surface-2:#182129; --line:#2b3740;
-      --text:#ecf4f7; --muted:#82919b; --blue:#17b7f2; --blue-soft:#06394d;
-      --red:#ff6471; --red-soft:#461d25; --yellow:#ffbf55; --green:#42d6b2;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --bg:#05090d; --surface:#0c141b; --surface2:#111c26; --line:#1b2a37; --muted:#8aa2af;
+      --text:#eaf4f9; --blue:#24c3ff; --blue-soft:#0b2a3a; --green:#3ee6b8; --red:#ff5f6e; --yellow:#ffc259;
+      --glow:0 0 40px rgba(36,195,255,.16);
     }
-    * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; color:var(--text); background:var(--bg); overflow-x:hidden; }
-    body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-      background:
-        radial-gradient(900px 420px at 85% -10%, rgba(23,183,242,.10), transparent 60%),
-        radial-gradient(700px 380px at -10% 110%, rgba(11,96,123,.10), transparent 60%); }
-    @keyframes rise { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.35; } }
-    .page { width:min(100%, 1000px); margin:auto; padding:28px 20px 48px; position:relative; }
-    .topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; }
-    .brand { display:flex; align-items:center; gap:12px; }
-    .brand-mark { width:38px; height:38px; display:grid; place-items:center; border-radius:11px;
-      background:linear-gradient(135deg,#0c2632,#0e2933); color:var(--blue);
-      box-shadow:inset 0 0 0 1px #14627d, 0 6px 18px rgba(0,0,0,.35); }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { -webkit-text-size-adjust:100%; }
+    body { background:radial-gradient(1200px 600px at 80% -10%, rgba(36,195,255,.14), transparent 60%), radial-gradient(900px 500px at 0% 110%, rgba(62,230,184,.06), transparent 55%), var(--bg); color:var(--text);
+      font-family:'Segoe UI', Tahoma, Arial, sans-serif; min-height:100vh; line-height:1.5; }
+    .page { width:min(1080px,100%); margin:0 auto; padding:24px 20px 48px; }
+
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:30px; }
+    .brand { display:flex; align-items:center; gap:11px; }
+    .brand-mark { width:42px; height:42px; border-radius:13px; display:grid; place-items:center; color:var(--blue); background:var(--blue-soft); border:1px solid #1d4a63; box-shadow:var(--glow); }
     .brand-mark svg { width:22px; height:22px; }
-    .brand-name { font-weight:800; letter-spacing:-.3px; font-size:16px; }
+    .brand-name { font-size:19px; font-weight:900; letter-spacing:-.5px; line-height:1.1; }
     .brand-name span { color:var(--blue); }
-    .brand-sub { display:block; color:var(--muted); font-size:10px; font-weight:500; margin-top:3px; letter-spacing:.4px; text-transform:uppercase; }
-    .top-actions { display:flex; align-items:center; gap:8px; }
-    .lang { color:var(--muted); border:1px solid var(--line); background:transparent; border-radius:9px; padding:8px 11px; font-size:11px; }
-    .heading { margin-bottom:20px; animation:rise .5s both; }
-    .heading h1 { margin:0; font-size:27px; letter-spacing:-.5px; }
-    .heading p { color:var(--muted); margin:7px 0 0; font-size:12px; line-height:1.7; }
-    .water-bar { display:flex; align-items:center; gap:10px; padding:12px 14px; border:1px solid #1d637b; border-radius:12px;
-      background:linear-gradient(90deg,#0e2933,#10212a); margin-bottom:14px; color:#83ddff; font-size:12px; letter-spacing:.3px; }
-    .water-bar::before { content:""; width:8px; height:8px; border-radius:50%; background:#45ddbd; box-shadow:0 0 0 4px rgba(69,221,189,.14); animation:blink 2.4s infinite; }
-    .quick-stats { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:28px; }
-    .stat { position:relative; overflow:hidden; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 15px; animation:rise .55s both; }
-    .stat:nth-child(2) { animation-delay:.08s; } .stat:nth-child(3) { animation-delay:.16s; }
-    .stat::after { content:""; position:absolute; width:64px; height:64px; border-radius:50%; right:-22px; top:-26px; opacity:.14; background:currentColor; filter:blur(2px); }
-    .stat strong { display:block; font-size:28px; letter-spacing:-.5px; }
-    .stat span { display:block; color:var(--muted); font-size:10px; margin-top:4px; letter-spacing:.4px; text-transform:uppercase; }
-    .stat.live { color:var(--green); } .stat.cut { color:var(--red); } .stat.wait { color:var(--yellow); }
-    .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:12px; }
-    .section-head h2 { margin:0; font-size:14px; letter-spacing:.3px; } .section-head span { color:var(--muted); font-size:10px; }
-    .tools { display:flex; gap:10px; margin-bottom:15px; }
-    .search { flex:1; min-width:0; padding:12px 14px; border:1px solid var(--line); outline:none; border-radius:11px; background:var(--surface); color:var(--text); font-size:12px; }
-    .search::placeholder { color:#687982; } .search:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(23,183,242,.12); }
-    .filter { color:var(--text); background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:0 12px; font-size:11px; outline:none; }
-    .feed { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:12px; }
-    .card { position:relative; display:flex; align-items:center; gap:12px; width:100%; min-height:84px; padding:16px 15px; color:var(--text); text-align:left;
-      border:none; border-radius:18px; background:linear-gradient(150deg, #0d1f2b, #10272f);
-      cursor:pointer; animation:rise .5s both; transition:transform .18s, box-shadow .18s; box-shadow:inset 0 0 0 1px var(--line), 0 6px 18px rgba(0,0,0,.3); overflow:hidden;
-      border-bottom:4px solid var(--blue); }
-    .card::after { content:""; position:absolute; right:-20px; top:-20px; width:70px; height:70px; border-radius:50%; background:var(--blue); opacity:.09; }
-    .card:nth-child(2) { animation-delay:.03s; } .card:nth-child(3) { animation-delay:.06s; } .card:nth-child(4) { animation-delay:.09s; } .card:nth-child(5) { animation-delay:.12s; } .card:nth-child(6) { animation-delay:.15s; }
-    .card:hover { transform:translateY(-3px); box-shadow:inset 0 0 0 1px var(--blue), 0 12px 28px rgba(0,0,0,.35); }
-    .card.bad { border-bottom-color:var(--red); background:linear-gradient(150deg, #24141a, #2a161b); }
-    .card.bad::after { background:var(--red); opacity:.10; }
-    .card.bad:hover { box-shadow:inset 0 0 0 1px var(--red), 0 12px 28px rgba(0,0,0,.35); }
-    .card.wait { border-bottom-color:var(--yellow); background:linear-gradient(150deg, #231d12, #2a2213); }
-    .card.wait::after { background:var(--yellow); opacity:.10; }
-    .card.wait:hover { box-shadow:inset 0 0 0 1px var(--yellow), 0 12px 28px rgba(0,0,0,.35); }
-    .card-icon { position:relative; display:grid; place-items:center; flex:0 0 42px; width:42px; height:42px; border-radius:14px; font-size:0; background:rgba(23,183,242,.14); color:var(--blue);
-      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%2317b7f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69 17.66 10a5.4 5.4 0 1 1-11.32 0L12 2.69z"/></svg>');
-      background-repeat:no-repeat; background-position:center; background-size:20px 20px; }
-    .bad .card-icon { background:rgba(255,100,113,.16); color:var(--red);
-      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23ff6471" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5 5 19M8.4 3.5C10 7 12 9.7 14 11l6 1.5"/><path d="M5 11c0 4.4 3.6 8 8 8 1.7 0 3.3-.5 4.6-1.4"/></svg>');
-      background-repeat:no-repeat; background-position:center; background-size:20px 20px; }
-    .wait .card-icon { background:rgba(255,191,85,.16); color:var(--yellow);
-      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23ffbf55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>');
-      background-repeat:no-repeat; background-position:center; background-size:20px 20px; }
+    .brand-sub { display:block; font-size:10px; font-weight:500; color:var(--muted); letter-spacing:0; margin-top:2px; }
+    .top-actions { display:flex; align-items:center; gap:10px; }
+    .lang { font-size:12px; color:var(--muted); border:1px solid var(--line); padding:7px 12px; border-radius:10px; background:var(--surface); }
+    .admin-btn { background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:10px; padding:9px 14px; font-size:12px; font-weight:700; cursor:pointer; transition:.16s; }
+    .admin-btn:hover { border-color:var(--blue); color:var(--blue); }
+
+    .hero { text-align:center; padding:26px 16px 30px; margin-bottom:22px; border-radius:24px; background:linear-gradient(160deg, rgba(36,195,255,.10), rgba(36,195,255,.02) 55%), var(--surface); border:1px solid var(--line); position:relative; overflow:hidden; }
+    .hero::after { content:""; position:absolute; width:220px; height:220px; border-radius:50%; background:var(--blue); opacity:.08; top:-90px; left:-70px; filter:blur(20px); }
+    .hero .pill { display:inline-flex; align-items:center; gap:7px; background:var(--blue-soft); border:1px solid #1d4a63; color:var(--blue); font-size:11px; font-weight:700; padding:6px 12px; border-radius:30px; margin-bottom:14px; }
+    .hero .pill::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--blue); box-shadow:0 0 8px var(--blue); }
+    .hero h1 { font-size:clamp(26px,5vw,40px); font-weight:900; letter-spacing:-1px; margin-bottom:10px; }
+    .hero p { color:var(--muted); font-size:clamp(13px,2.4vw,15px); max-width:560px; margin:0 auto; }
+
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:26px; }
+    .stat { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:18px 16px; text-align:center; position:relative; overflow:hidden; }
+    .stat strong { display:block; font-size:clamp(28px,6vw,40px); font-weight:900; line-height:1; letter-spacing:-1px; }
+    .stat span { display:block; margin-top:8px; font-size:11px; color:var(--muted); font-weight:600; }
+    .stat.live strong { color:var(--green); } .stat.cut strong { color:var(--red); } .stat.wait strong { color:var(--yellow); }
+    .stat::before { content:""; position:absolute; inset:0 0 auto 0; height:4px; }
+    .stat.live::before { background:var(--green); } .stat.cut::before { background:var(--red); } .stat.wait::before { background:var(--yellow); }
+
+    .ntb { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+    .ntb h2 { font-size:18px; font-weight:900; letter-spacing:-.5px; }
+    .ntb .count { font-size:11px; color:var(--muted); background:var(--surface); border:1px solid var(--line); padding:6px 12px; border-radius:20px; }
+
+    .tabs { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:14px; }
+    .tab { display:flex; align-items:center; justify-content:center; gap:8px; padding:13px 8px; border-radius:14px; cursor:pointer; font-size:13px; font-weight:800; color:var(--text); background:var(--surface); border:1px solid var(--line); transition:transform .14s, background .14s, border-color .14s; }
+    .tab b { display:inline-grid; place-items:center; min-width:24px; height:24px; padding:0 6px; border-radius:12px; background:rgba(255,255,255,.08); font-size:11px; }
+    .tab:active { transform:scale(.96); }
+    .tab.active { color:#04121a; background:var(--blue); border-color:var(--blue); }
+    .tab.active b { background:rgba(0,0,0,.18); color:#fff; }
+    .tab.t-good { border-bottom:3px solid var(--green); } .tab.t-good.active { background:var(--green); border-color:var(--green); }
+    .tab.t-bad { border-bottom:3px solid var(--red); } .tab.t-bad.active { background:var(--red); border-color:var(--red); }
+    .tab.t-wait { border-bottom:3px solid var(--yellow); } .tab.t-wait.active { background:var(--yellow); border-color:var(--yellow); }
+
+    .tools { display:flex; gap:10px; margin-bottom:18px; }
+    .search { flex:1; background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:13px; padding:13px 16px; font-size:14px; outline:none; }
+    .search::placeholder { color:#5f7783; }
+    .search:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(36,195,255,.13); }
+    .filter { background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:13px; padding:0 12px; font-size:13px; outline:none; }
+
+    .feed { display:grid; grid-template-columns:repeat(auto-fill,minmax(235px,1fr)); gap:12px; }
+
+    .card { position:relative; display:flex; align-items:center; gap:12px; width:100%; min-height:88px; padding:16px 15px; color:var(--text); text-align:left; cursor:pointer;
+      border:none; border-radius:18px; background:linear-gradient(150deg,#0d1b26,#10232e); box-shadow:inset 0 0 0 1px var(--line), 0 8px 22px rgba(0,0,0,.28); overflow:hidden;
+      animation:rise .5s both; transition:transform .18s, box-shadow .18s; direction:ltr; }
+    .card::after { content:""; position:absolute; right:-22px; top:-22px; width:74px; height:74px; border-radius:50%; background:var(--blue); opacity:.10; }
+    .card:nth-child(2){animation-delay:.03s}.card:nth-child(3){animation-delay:.06s}.card:nth-child(4){animation-delay:.09s}.card:nth-child(5){animation-delay:.12s}.card:nth-child(6){animation-delay:.15s}
+    .card:hover { transform:translateY(-3px); box-shadow:inset 0 0 0 1px var(--blue), 0 14px 30px rgba(0,0,0,.36); }
+    .card.bad { background:linear-gradient(150deg,#24151b,#2b171d); } .card.bad::after { background:var(--red); opacity:.11; } .card.bad:hover { box-shadow:inset 0 0 0 1px var(--red), 0 14px 30px rgba(0,0,0,.36); }
+    .card.wait { background:linear-gradient(150deg,#241e13,#2b2214); } .card.wait::after { background:var(--yellow); opacity:.11; } .card.wait:hover { box-shadow:inset 0 0 0 1px var(--yellow), 0 14px 30px rgba(0,0,0,.36); }
+
+    .card-icon { position:relative; display:grid; place-items:center; flex:0 0 44px; width:44px; height:44px; border-radius:14px; font-size:19px; background:rgba(36,195,255,.13); }
+    .bad .card-icon { background:rgba(255,95,110,.14); } .wait .card-icon { background:rgba(255,194,89,.14); }
+
     .card-main { flex:1; min-width:0; }
-    .card-title { display:block; font-size:14px; font-weight:800; letter-spacing:-.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .card-meta { display:block; color:var(--muted); font-size:10px; margin-top:5px; }
-    .card-meta b { color:#c0cbd0; font-weight:600; }
-    .card-status { display:inline-flex; align-items:center; gap:6px; flex:none; border-radius:20px; padding:6px 10px; font-size:9px; font-weight:800; white-space:nowrap; letter-spacing:.3px; }
-    .card-status::before { content:""; width:6px; height:6px; border-radius:50%; background:currentColor; }
-    .card-status.good { color:#5ce6c2; background:#073e3b; } .card-status.bad { color:#ff7d87; background:#4c2029; } .card-status.wait { color:#ffd06b; background:#493719; }
-    .chevron { display:none; }
-    .tip { display:flex; gap:11px; align-items:flex-start; margin-top:26px; padding:14px 15px; border:1px dashed #28586a; border-radius:13px; background:#0c2029; color:#9cb8c1; font-size:10px; line-height:1.7; }
-    .tip strong { color:#c7eff8; display:block; font-size:11px; margin-bottom:3px; }
-    .footer { display:flex; justify-content:space-between; color:#63757e; font-size:10px; margin-top:28px; padding-top:16px; border-top:1px solid #19252c; }
-    .toast { position:fixed; left:50%; bottom:20px; transform:translate(-50%, 20px); padding:12px 17px; border:1px solid #287d95; border-radius:11px; background:#0c2d39; color:#c9f5ff; font-size:11px; opacity:0; pointer-events:none; transition:.25s; z-index:20; box-shadow:0 8px 24px rgba(0,0,0,.35); }
+    .card-title { display:block; font-size:14.5px; font-weight:800; letter-spacing:-.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#f3fbfe; }
+    .card-meta { display:block; color:var(--muted); font-size:10.5px; margin-top:6px; }
+    .card-meta b { color:#c7d8e0; font-weight:700; }
+
+    .badge { display:inline-flex; align-items:center; gap:6px; flex:none; border-radius:22px; padding:7px 11px; font-size:10px; font-weight:800; white-space:nowrap; letter-spacing:.2px; }
+    .badge::before { content:""; width:6px; height:6px; border-radius:50%; background:currentColor; }
+    .badge.good { color:#6ff0ca; background:#0b3a34; } .badge.bad { color:#ff7d88; background:#4c2029; } .badge.wait { color:#ffd06f; background:#4a3818; }
+    .card-status { display:inline-flex; align-items:center; gap:6px; flex:none; border-radius:22px; padding:7px 11px; font-size:10px; font-weight:800; white-space:nowrap; letter-spacing:.2px; }
+    .card-status::before { content:"; width:6px; height:6px; border-radius:50%; background:currentColor; }
+    .card-status.good { color:#6ff0ca; background:#0b3a34; } .card-status.bad { color:#ff7d88; background:#4c2029; } .card-status.wait { color:#ffd06f; background:#4a3818; }
+
+    .tip { display:flex; gap:11px; align-items:flex-start; margin-top:24px; padding:15px 16px; border:1px dashed #2b5a6d; border-radius:14px; background:rgba(36,195,255,.04); color:var(--muted); font-size:11px; line-height:1.7; }
+    .tip strong { color:#dcf3fd; display:block; font-size:12px; margin-bottom:3px; }
+    .footer { display:flex; justify-content:space-between; color:#5f7680; font-size:10.5px; margin-top:26px; padding-top:16px; border-top:1px solid var(--line); }
+
+    @keyframes rise { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+    .toast { position:fixed; left:50%; bottom:22px; transform:translate(-50%,20px); padding:13px 18px; border:1px solid #2b7d96; border-radius:12px; background:#0c2d39; color:#cdf4ff; font-size:12px; opacity:0; pointer-events:none; transition:.25s; z-index:50; box-shadow:0 10px 28px rgba(0,0,0,.4); }
     .toast.show { opacity:1; transform:translate(-50%,0); }
-    .admin-btn { color:#ffd176; border:1px solid #5a4a20; background:#1a1508; border-radius:10px; padding:8px 11px; font-size:11px; cursor:pointer; transition:.2s; display:flex; align-items:center; gap:5px; }
-    .admin-btn:hover { background:#2a2310; border-color:#7a6a30; }
-    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.72); backdrop-filter:blur(6px); z-index:100; display:none; align-items:center; justify-content:center; padding:20px; }
-    .modal-overlay.show { display:flex; }
-    .modal { width:min(100%, 420px); background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:28px 24px; animation:rise .35s both; box-shadow:0 18px 50px rgba(0,0,0,.45); }
-    .modal h3 { margin:0 0 6px; font-size:18px; text-align:center; }
-    .modal p { margin:0 0 20px; text-align:center; color:var(--muted); font-size:12px; }
-    .modal label { display:block; font-size:11px; color:var(--muted); margin-bottom:4px; margin-top:14px; }
-    .modal input, .modal select, .modal textarea { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:var(--bg); color:var(--text); font-size:12px; outline:none; }
+
+    .modal-overlay { position:fixed; inset:0; display:none; place-items:center; padding:20px; background:rgba(2,8,12,.66); backdrop-filter:blur(3px); z-index:40; }
+    .modal-overlay.show { display:grid; }
+    .modal { width:100%; max-width:400px; background:var(--surface2); border:1px solid var(--line); border-radius:20px; padding:26px 24px; animation:rise .25s both; }
+    .modal h3 { font-size:18px; font-weight:900; margin-bottom:6px; }
+    .modal p { color:var(--muted); font-size:12px; margin-bottom:14px; }
+    .modal label { display:block; font-size:11px; color:var(--muted); margin:12px 0 6px; font-weight:700; }
+    .modal input, .modal select, .modal textarea { width:100%; background:var(--bg); color:var(--text); border:1px solid var(--line); border-radius:11px; padding:12px 14px; font-size:13px; outline:none; }
     .modal input:focus, .modal select:focus, .modal textarea:focus { border-color:var(--blue); }
-    .modal textarea { min-height:70px; resize:vertical; }
-    .modal-actions { display:flex; gap:8px; margin-top:20px; }
-    .modal-actions button { flex:1; padding:10px; border:none; border-radius:10px; font-size:12px; font-weight:700; cursor:pointer; }
-    .btn-cancel { background:var(--line); color:var(--text); }
-    .btn-primary { background:var(--blue); color:#000; }
-    .btn-danger { background:var(--red); color:#fff; }
-    .btn-success { background:var(--green); color:#000; }
+    .modal textarea { resize:vertical; min-height:70px; }
+    .modal-actions { display:flex; gap:9px; margin-top:18px; }
+    .modal-actions button { flex:1; }
+    .btn-cancel { padding:12px; border:1px solid var(--line); border-radius:11px; background:var(--surface); color:var(--text); font-size:13px; font-weight:700; cursor:pointer; }
+    .btn-primary { padding:12px; border:none; border-radius:11px; background:var(--blue); color:#04121a; font-size:13px; font-weight:800; cursor:pointer; }
+    .btn-success { padding:12px; border:none; border-radius:11px; background:var(--green); color:#03211a; font-size:13px; font-weight:800; cursor:pointer; }
+    .btn-danger { padding:12px; border:none; border-radius:11px; background:var(--red); color:#2a0408; font-size:13px; font-weight:800; cursor:pointer; }
+    .vote-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:6px; }
+
     .admin-panel { display:none; }
     .admin-panel.show { display:block; }
-    .admin-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
-    .admin-header h2 { margin:0; font-size:16px; color:#ffd176; }
-    .admin-badge { padding:4px 11px; border-radius:9px; background:#1a1508; border:1px solid #5a4a20; color:#ffd176; font-size:10px; font-weight:700; }
-    .admin-tabs { display:flex; gap:6px; margin-bottom:16px; }
-    .admin-tab { padding:7px 14px; border-radius:9px; background:var(--bg); border:1px solid var(--line); color:var(--muted); font-size:11px; cursor:pointer; }
-    .admin-tab.active { background:var(--blue-soft); border-color:var(--blue); color:var(--blue); }
+    .admin-header { display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border:1px solid var(--line); border-radius:18px; background:var(--surface); margin-bottom:16px; }
+    .admin-header h2 { font-size:16px; font-weight:900; }
+    .admin-badge { font-size:11px; font-weight:700; color:var(--green); border:1px solid #1d5a4d; background:#0b2a26; padding:6px 12px; border-radius:20px; }
+    .admin-tabs { display:flex; gap:8px; margin-bottom:16px; }
+    .admin-tab { flex:1; text-align:center; padding:12px; border-radius:12px; background:var(--surface); border:1px solid var(--line); font-size:13px; font-weight:700; color:var(--muted); cursor:pointer; }
+    .admin-tab.active { color:var(--blue); border-color:var(--blue); background:var(--blue-soft); }
     .admin-section { display:none; }
     .admin-section.active { display:block; }
-    .zone-list { display:flex; flex-direction:column; gap:6px; max-height:300px; overflow-y:auto; }
-    .zone-item { display:flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid var(--line); border-radius:10px; background:var(--bg); font-size:11px; }
-    .zone-item span { flex:1; }
-    .zone-item button { padding:4px 8px; border:1px solid var(--line); border-radius:7px; background:var(--surface); color:var(--text); font-size:10px; cursor:pointer; }
-    .zone-item button.del { color:var(--red); border-color:var(--red-soft); }
-    @media (max-width:720px) { .page { width:min(100%,100vw); } .feed { grid-template-columns:repeat(2, 1fr); gap:10px; } .card { min-height:70px; padding:12px 12px; } .card-title { font-size:12px; } }
-    @media (max-width:520px) { .feed { grid-template-columns:1fr; } .page { padding:18px 12px 34px; } .topbar { margin-bottom:22px; } .heading h1 { font-size:23px; } .heading p { font-size:12px; } .card { min-height:82px; padding:14px 14px; gap:12px; } .card-title { font-size:14.5px; } .card-meta { font-size:11px; } .card-status { font-size:10px; padding:7px 11px; } .quick-stats { gap:8px; } .stat { padding:14px; } .stat strong { font-size:28px; } .search { font-size:14px; padding:13px 14px; } .filter { font-size:13px; padding:0 12px; height:44px; } .brand-name { font-size:15px; } .admin-btn { padding:10px 12px; font-size:12px; } .quick-tabs { gap:6px; } .qtab { font-size:13px; padding:11px 10px; } }
+    .zone-list { display:flex; flex-direction:column; gap:8px; }
+    .zone-item { display:flex; align-items:center; gap:10px; padding:12px 14px; background:var(--surface); border:1px solid var(--line); border-radius:12px; }
+    .zone-item span { flex:1; font-size:12px; font-weight:600; }
+    .zone-item button { padding:6px 12px; border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--text); font-size:11px; cursor:pointer; }
+    .zone-item button.del { color:var(--red); border-color:#4c2029; }
 
-    .quick-tabs { display:flex; gap:8px; margin-bottom:14px; overflow-x:auto; padding-bottom:4px; }
-    .qtab { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:13px 12px; border:none; border-radius:14px; cursor:pointer;
-      font-size:13px; font-weight:800; color:var(--text); background:var(--surface); border:1px solid var(--line);
-      transition:transform .15s, background .15s, border-color .15s; white-space:nowrap; }
-    .qtab b { display:inline-grid; place-items:center; min-width:22px; height:22px; padding:0 6px; border-radius:11px; background:rgba(255,255,255,.08); font-size:11px; }
-    .qtab:active { transform:scale(.97); }
-    .qtab.active { color:#03141c; background:var(--blue); border-color:var(--blue); }
-    .qtab.active b { background:rgba(0,0,0,.18); color:#fff; }
-    .qtab.good { border-bottom:3px solid var(--green); } .qtab.good.active { background:var(--green); border-color:var(--green); }
-    .qtab.bad { border-bottom:3px solid var(--red); } .qtab.bad.active { background:var(--red); border-color:var(--red); }
-    .qtab.wait { border-bottom:3px solid var(--yellow); } .qtab.wait.active { background:var(--yellow); border-color:var(--yellow); }
+    @media (max-width:720px) { .page { padding:20px 14px 40px; } .tabs { grid-template-columns:repeat(4,1fr); gap:6px; } .tab { font-size:11px; padding:12px 4px; } .feed { grid-template-columns:repeat(2,1fr); gap:10px; } .tools { flex-direction:column; } .filter { padding:12px; } }
+    @media (max-width:520px) { .page { padding:16px 12px 36px; } .hero { padding:22px 14px 24px; } .stats { gap:8px; } .stat { padding:15px 10px; } .brand-name { font-size:16px; } .feed { grid-template-columns:1fr; gap:11px; } .card { min-height:86px; padding:15px; } .card-title { font-size:15px; } .card-meta { font-size:11px; } .badge { font-size:10.5px; padding:8px 12px; } .search { padding:13px 14px; font-size:14px; } .topbar { margin-bottom:22px; } }
   </style>
 </head>
 <body>
   <main class="page">
     <header class="topbar">
-      <div class="brand"><div class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69 17.66 10a5.4 5.4 0 1 1-11.32 0L12 2.69z"/></svg></div><div class="brand-name">water<span>0</span><small class="brand-sub">Tunisie · réseau citoyen</small></div></div>
+      <div class="brand">
+        <div class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69 17.66 10a5.4 5.4 0 1 1-11.32 0L12 2.69z"/></svg></div>
+        <div class="brand-name">شبكة الماء<span>0</span><small class="brand-sub">Tunisie · Réseau citoyen · شبكة تونس للماء</small></div>
+      </div>
       <div class="top-actions"><button class="admin-btn" onclick="showLogin()">⚙ الإدارة</button><span class="lang">عربي</span></div>
     </header>
 
-    <section class="heading"><h1>شبكة تونس للماء</h1><p>تتبع حالة تزويد الماء في حيّك وفي كل مناطق تونس، لحظة بلحظة.</p></section>
-    <div class="water-bar">حالة تزويد الماء فقط — شبكة التحديثات الحيّة</div>
-    <section class="quick-stats"><div class="stat live"><strong id="liveCount">265</strong><span>ماء متوفر</span></div><div class="stat cut"><strong id="cutCount">88</strong><span>مقطوع</span></div><div class="stat wait"><strong id="waitCount">22</strong><span>قيد التحقق</span></div></section>
+    <section class="hero">
+      <span class="pill">حالة الماء الآن — تحديث حي</span>
+      <h1>شبكة تونس للماء</h1>
+      <p>تتبع حالة تزويد الماء في حيّك وفي كل مناطق تونس، لحظة بلحظة، بمساعدة المواطنين.</p>
+    </section>
 
-    <div class="section-head"><h2>آخر التحديثات</h2><span id="resultCount">375 منطقة متابعة</span></div>
-    <div class="quick-tabs" id="quickTabs">
-      <button class="qtab active" data-v="all">الكل <b id="qAll">0</b></button>
-      <button class="qtab good" data-v="good">ماء ✔ <b id="qGood">0</b></button>
-      <button class="qtab bad" data-v="bad">مقطوع ✖ <b id="qBad">0</b></button>
-      <button class="qtab wait" data-v="wait">قيد التحقق <b id="qWait">0</b></button>
+    <section class="stats">
+      <div class="stat live"><strong id="liveCount">–</strong><span>ماء متوفر</span></div>
+      <div class="stat cut"><strong id="cutCount">–</strong><span>مقطوع</span></div>
+      <div class="stat wait"><strong id="waitCount">–</strong><span>قيد التحقق</span></div>
+    </section>
+
+    <div class="ntb">
+      <h2>آخر التحديثات</h2>
+      <span class="count" id="resultCount">0 منطقة متابعة</span>
     </div>
-    <div class="tools"><input class="search" id="search" placeholder="ابحث عن منطقة..." /><select class="filter" id="filter"><option value="all">الكل</option><option value="good">ماء متوفر</option><option value="bad">مقطوع</option><option value="wait">قيد التحقق</option></select></div>
+
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-v="all">الكل <b id="qAll">0</b></button>
+      <button class="tab t-good" data-v="good">متوفر ✔ <b id="qGood">0</b></button>
+      <button class="tab t-bad" data-v="bad">مقطوع ✖ <b id="qBad">0</b></button>
+      <button class="tab t-wait" data-v="wait">قيد التحقق <b id="qWait">0</b></button>
+    </div>
+
+    <div class="tools">
+      <input class="search" id="search" placeholder="ابحث عن منطقة..." />
+      <select class="filter" id="filter">
+        <option value="all">الكل</option>
+        <option value="good">ماء متوفر</option>
+        <option value="bad">مقطوع</option>
+        <option value="wait">قيد التحقق</option>
+      </select>
+    </div>
+
     <section class="feed" id="feed">
-<button class="card" data-name="Bouhsina" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bouhsina</span><span class="card-meta">Sousse 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Aïn Zaghouan" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Aïn Zaghouan</span><span class="card-meta">Tunis 💧 <b>28</b> 🚱 <b>8</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Aïn Zaghouan Nord" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Aïn Zaghouan Nord</span><span class="card-meta">Tunis 💧 <b>32</b> 🚱 <b>8</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Alain Savary" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Alain Savary</span><span class="card-meta">Tunis 💧 <b>13</b> 🚱 <b>5</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Bab El Khadhra" data-status="bad" data-gov="Tunis"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Bab El Khadhra</span><span class="card-meta">Tunis 💧 <b>2</b> 🚱 <b>6</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bab Jdid" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bab Jdid</span><span class="card-meta">Tunis 💧 <b>4</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bab Saadoun" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bab Saadoun</span><span class="card-meta">Tunis 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bab Souika" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bab Souika</span><span class="card-meta">Tunis 💧 <b>3</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bellevue" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bellevue</span><span class="card-meta">Tunis 💧 <b>21</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Berges du Lac 1" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Berges du Lac 1</span><span class="card-meta">Tunis 💧 <b>15</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Berges du Lac 2" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Berges du Lac 2</span><span class="card-meta">Tunis 💧 <b>96</b> 🚱 <b>15</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Berges du Lac 3 (Kheireddine)" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Berges du Lac 3 (Kheireddine)</span><span class="card-meta">Tunis 💧 <b>8</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bhar Lazreg" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bhar Lazreg</span><span class="card-meta">Tunis 💧 <b>30</b> 🚱 <b>7</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Borj Chakir" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Borj Chakir</span><span class="card-meta">Tunis 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bouchoucha" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bouchoucha</span><span class="card-meta">Tunis 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Carthage / Sidi Bou Saïd (autre)" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Carthage / Sidi Bou Saïd (autre)</span><span class="card-meta">Tunis 💧 <b>4</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Carthage Amilcar" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Carthage Amilcar</span><span class="card-meta">Tunis 💧 <b>2</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Carthage Byrsa" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Carthage Byrsa</span><span class="card-meta">Tunis 💧 <b>12</b> 🚱 <b>7</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Carthage Dermech" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Carthage Dermech</span><span class="card-meta">Tunis 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Carthage Hannibal" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Carthage Hannibal</span><span class="card-meta">Tunis 💧 <b>2</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Carthage Mohamed Ali" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Carthage Mohamed Ali</span><span class="card-meta">Tunis 💧 <b>9</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Carthage Présidence" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Carthage Présidence</span><span class="card-meta">Tunis 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Carthage Salammbô" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Carthage Salammbô</span><span class="card-meta">Tunis 💧 <b>22</b> 🚱 <b>5</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Carthage Yasmina" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Carthage Yasmina</span><span class="card-meta">Tunis 💧 <b>19</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Centre Urbain Nord" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Centre Urbain Nord</span><span class="card-meta">Tunis 💧 <b>22</b> 🚱 <b>6</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Centre-ville / Lafayette" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Centre-ville / Lafayette</span><span class="card-meta">Tunis 💧 <b>10</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Charguia 1" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Charguia 1</span><span class="card-meta">Tunis 💧 <b>18</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Charguia 2" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Charguia 2</span><span class="card-meta">Tunis 💧 <b>4</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité El Khadra / Olympique" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité El Khadra / Olympique</span><span class="card-meta">Tunis 💧 <b>9</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité El Wahat (El Agba)" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité El Wahat (El Agba)</span><span class="card-meta">Tunis 💧 <b>31</b> 🚱 <b>4</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité El Wahat (L'Aouina)" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité El Wahat (L'Aouina)</span><span class="card-meta">Tunis 💧 <b>40</b> 🚱 <b>12</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Ettahrir" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Ettahrir</span><span class="card-meta">Tunis 💧 <b>7</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Ezzouhour" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Ezzouhour</span><span class="card-meta">Tunis 💧 <b>4</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Ibn Khaldoun" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Ibn Khaldoun</span><span class="card-meta">Tunis 💧 <b>10</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Ibn Sina" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Ibn Sina</span><span class="card-meta">Tunis 💧 <b>22</b> 🚱 <b>13</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Hraïria" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Hraïria</span><span class="card-meta">Tunis 💧 <b>15</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Menzah 1" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Menzah 1</span><span class="card-meta">Tunis 💧 <b>25</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Menzah 4" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Menzah 4</span><span class="card-meta">Tunis 💧 <b>13</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="El Omrane" data-status="bad" data-gov="Tunis"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">El Omrane</span><span class="card-meta">Tunis 💧 <b>2</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Omrane Supérieur" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Omrane Supérieur</span><span class="card-meta">Tunis 💧 <b>25</b> 🚱 <b>7</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Ouardia / Kabaria" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Ouardia / Kabaria</span><span class="card-meta">Tunis 💧 <b>28</b> 🚱 <b>12</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Essaidia" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Essaidia</span><span class="card-meta">Tunis 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ezzahrouni" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ezzahrouni</span><span class="card-meta">Tunis 💧 <b>11</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Gammarth" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Gammarth</span><span class="card-meta">Tunis 💧 <b>13</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Gammarth Supérieur" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Gammarth Supérieur</span><span class="card-meta">Tunis 💧 <b>16</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Gammarth Village" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Gammarth Village</span><span class="card-meta">Tunis 💧 <b>28</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Ghedir El Golla" data-status="bad" data-gov="Tunis"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Ghedir El Golla</span><span class="card-meta">Tunis 💧 <b>1</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Gorjani / 9 Avril" data-status="wait" data-gov="Tunis"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Gorjani / 9 Avril</span><span class="card-meta">Tunis 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Hafsia" data-status="bad" data-gov="Tunis"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Hafsia</span><span class="card-meta">Tunis 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Halfaouine" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Halfaouine</span><span class="card-meta">Tunis 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Jardins de Carthage (côté ISC / villas)" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Jardins de Carthage (côté ISC / villas)</span><span class="card-meta">Tunis 💧 <b>11</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Jardins de Carthage (côté parc / forêt)" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Jardins de Carthage (côté parc / forêt)</span><span class="card-meta">Tunis 💧 <b>11</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Jbal Jloud" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Jbal Jloud</span><span class="card-meta">Tunis 💧 <b>8</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Jbel Lahmar" data-status="bad" data-gov="Tunis"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Jbel Lahmar</span><span class="card-meta">Tunis 💧 <b>6</b> 🚱 <b>11</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Khaznadar" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Khaznadar</span><span class="card-meta">Tunis 💧 <b>8</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="L'Aouina" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">L'Aouina</span><span class="card-meta">Tunis 💧 <b>10</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="La Goulette" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">La Goulette</span><span class="card-meta">Tunis 💧 <b>7</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="La Marsa" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">La Marsa</span><span class="card-meta">Tunis 💧 <b>61</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="La Marsa Plage" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">La Marsa Plage</span><span class="card-meta">Tunis 💧 <b>5</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="La Marsa Ville" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">La Marsa Ville</span><span class="card-meta">Tunis 💧 <b>20</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Le Bardo" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Le Bardo</span><span class="card-meta">Tunis 💧 <b>21</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Le Kram" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Le Kram</span><span class="card-meta">Tunis 💧 <b>4</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Le Kram Est" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Le Kram Est</span><span class="card-meta">Tunis 💧 <b>9</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Le Kram Ouest" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Le Kram Ouest</span><span class="card-meta">Tunis 💧 <b>13</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Médina" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Médina</span><span class="card-meta">Tunis 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mellassine" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mellassine</span><span class="card-meta">Tunis 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Montfleury" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Montfleury</span><span class="card-meta">Tunis 💧 <b>4</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Montplaisir" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Montplaisir</span><span class="card-meta">Tunis 💧 <b>14</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mutuelleville / Belvédère" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mutuelleville / Belvédère</span><span class="card-meta">Tunis 💧 <b>31</b> 🚱 <b>4</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ras Tabia" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ras Tabia</span><span class="card-meta">Tunis 💧 <b>5</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sidi Daoud (La Marsa)" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sidi Daoud (La Marsa)</span><span class="card-meta">Tunis 💧 <b>10</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sidi Hassine / Séjoumi" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sidi Hassine / Séjoumi</span><span class="card-meta">Tunis 💧 <b>16</b> 🚱 <b>5</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ariana Ville" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ariana Ville</span><span class="card-meta">Ariana 💧 <b>12</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Borj Baccouche" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Borj Baccouche</span><span class="card-meta">Ariana 💧 <b>17</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Borj Louzir" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Borj Louzir</span><span class="card-meta">Ariana 💧 <b>58</b> 🚱 <b>8</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Borj Touil" data-status="bad" data-gov="Ariana"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Borj Touil</span><span class="card-meta">Ariana 💧 <b>3</b> 🚱 <b>77</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Chotrana 1" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Chotrana 1</span><span class="card-meta">Ariana 💧 <b>30</b> 🚱 <b>5</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Chotrana 2" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Chotrana 2</span><span class="card-meta">Ariana 💧 <b>4</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Chotrana 3" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Chotrana 3</span><span class="card-meta">Ariana 💧 <b>13</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Borj Turki" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Borj Turki</span><span class="card-meta">Ariana 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité El Faouz" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité El Faouz</span><span class="card-meta">Ariana 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité El Ghazela" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité El Ghazela</span><span class="card-meta">Ariana 💧 <b>55</b> 🚱 <b>6</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Ennahli" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Ennahli</span><span class="card-meta">Ariana 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Ennour Jaâfar" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Ennour Jaâfar</span><span class="card-meta">Ariana 💧 <b>6</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Ennozha" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Ennozha</span><span class="card-meta">Ariana 💧 <b>21</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Essahafa" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Essahafa</span><span class="card-meta">Ariana 💧 <b>10</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Ettadhamen" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Ettadhamen</span><span class="card-meta">Ariana 💧 <b>26</b> 🚱 <b>8</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Hédi Nouira" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Hédi Nouira</span><span class="card-meta">Ariana 💧 <b>5</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Intilaka" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Intilaka</span><span class="card-meta">Ariana 💧 <b>11</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Jaafar" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Jaafar</span><span class="card-meta">Ariana 💧 <b>17</b> 🚱 <b>5</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Dar Fadhal" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Dar Fadhal</span><span class="card-meta">Ariana 💧 <b>20</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Manar 1-2" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Manar 1-2</span><span class="card-meta">Ariana 💧 <b>21</b> 🚱 <b>16</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Manar 3" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Manar 3</span><span class="card-meta">Ariana 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Menzah 5" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Menzah 5</span><span class="card-meta">Ariana 💧 <b>62</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Menzah 6" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Menzah 6</span><span class="card-meta">Ariana 💧 <b>27</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Menzah 7" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Menzah 7</span><span class="card-meta">Ariana 💧 <b>62</b> 🚱 <b>20</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Menzah 8" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Menzah 8</span><span class="card-meta">Ariana 💧 <b>6</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Menzah 9" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Menzah 9</span><span class="card-meta">Ariana 💧 <b>15</b> 🚱 <b>5</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ennasr 1" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ennasr 1</span><span class="card-meta">Ariana 💧 <b>19</b> 🚱 <b>10</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Ennasr 2" data-status="wait" data-gov="Ariana"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Ennasr 2</span><span class="card-meta">Ariana 💧 <b>67</b> 🚱 <b>42</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ennkhilette" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ennkhilette</span><span class="card-meta">Ariana 💧 <b>47</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Jardins d'El Menzah 1" data-status="bad" data-gov="Ariana"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Jardins d'El Menzah 1</span><span class="card-meta">Ariana 💧 <b>44</b> 🚱 <b>52</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Jardins d'El Menzah 2" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Jardins d'El Menzah 2</span><span class="card-meta">Ariana 💧 <b>57</b> 🚱 <b>35</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Kalâat el-Andalous" data-status="bad" data-gov="Ariana"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Kalâat el-Andalous</span><span class="card-meta">Ariana 💧 <b>7</b> 🚱 <b>10</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="La Soukra" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">La Soukra</span><span class="card-meta">Ariana 💧 <b>23</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Mnihla" data-status="bad" data-gov="Ariana"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Mnihla</span><span class="card-meta">Ariana 💧 <b>24</b> 🚱 <b>36</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Nouvelle Ariana" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Nouvelle Ariana</span><span class="card-meta">Ariana 💧 <b>12</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Nouvelle Soukra" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Nouvelle Soukra</span><span class="card-meta">Ariana 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Petite Ariana" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Petite Ariana</span><span class="card-meta">Ariana 💧 <b>36</b> 🚱 <b>5</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Raoued" data-status="bad" data-gov="Ariana"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Raoued</span><span class="card-meta">Ariana 💧 <b>23</b> 🚱 <b>42</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Riadh El Andalous" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Riadh El Andalous</span><span class="card-meta">Ariana 💧 <b>58</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sidi Fraj" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sidi Fraj</span><span class="card-meta">Ariana 💧 <b>4</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Sidi Thabet" data-status="bad" data-gov="Ariana"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Sidi Thabet</span><span class="card-meta">Ariana 💧 <b>5</b> 🚱 <b>5</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Soukra Park" data-status="good" data-gov="Ariana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Soukra Park</span><span class="card-meta">Ariana 💧 <b>6</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ben Arous Ville" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ben Arous Ville</span><span class="card-meta">Ben Arous 💧 <b>25</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Bennane" data-status="bad" data-gov="Ben Arous"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Bennane</span><span class="card-meta">Ben Arous 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bir El Bey" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bir El Bey</span><span class="card-meta">Ben Arous 💧 <b>3</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bir Kassâa" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bir Kassâa</span><span class="card-meta">Ben Arous 💧 <b>6</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Borj Cédria" data-status="bad" data-gov="Ben Arous"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Borj Cédria</span><span class="card-meta">Ben Arous 💧 <b>4</b> 🚱 <b>20</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bougarnine" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bougarnine</span><span class="card-meta">Ben Arous 💧 <b>8</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Boumhel" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Boumhel</span><span class="card-meta">Ben Arous 💧 <b>102</b> 🚱 <b>8</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Chebedda" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Chebedda</span><span class="card-meta">Ben Arous 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Mhamdia / Fouchana" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Mhamdia / Fouchana</span><span class="card-meta">Ben Arous 💧 <b>60</b> 🚱 <b>19</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Mourouj" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Mourouj</span><span class="card-meta">Ben Arous 💧 <b>5</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Mourouj 1" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Mourouj 1</span><span class="card-meta">Ben Arous 💧 <b>8</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Mourouj 2" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Mourouj 2</span><span class="card-meta">Ben Arous 💧 <b>5</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Mourouj 3" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Mourouj 3</span><span class="card-meta">Ben Arous 💧 <b>40</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Mourouj 4" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Mourouj 4</span><span class="card-meta">Ben Arous 💧 <b>5</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Mourouj 5" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Mourouj 5</span><span class="card-meta">Ben Arous 💧 <b>13</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Mourouj 6" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Mourouj 6</span><span class="card-meta">Ben Arous 💧 <b>46</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="El Yasminette" data-status="bad" data-gov="Ben Arous"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">El Yasminette</span><span class="card-meta">Ben Arous 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ezzahra" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ezzahra</span><span class="card-meta">Ben Arous 💧 <b>51</b> 🚱 <b>8</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Hammam Lif / Hammam Chott" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Hammam Lif / Hammam Chott</span><span class="card-meta">Ben Arous 💧 <b>70</b> 🚱 <b>4</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Khelidia" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Khelidia</span><span class="card-meta">Ben Arous 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mégrine" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mégrine</span><span class="card-meta">Ben Arous 💧 <b>43</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mégrine Riadh" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mégrine Riadh</span><span class="card-meta">Ben Arous 💧 <b>10</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mégrine Sidi Rezig" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mégrine Sidi Rezig</span><span class="card-meta">Ben Arous 💧 <b>10</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mghira" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mghira</span><span class="card-meta">Ben Arous 💧 <b>6</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mornag" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mornag</span><span class="card-meta">Ben Arous 💧 <b>35</b> 🚱 <b>9</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Naassen" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Naassen</span><span class="card-meta">Ben Arous 💧 <b>9</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Nouvelle Médina" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Nouvelle Médina</span><span class="card-meta">Ben Arous 💧 <b>26</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Radès" data-status="good" data-gov="Ben Arous"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Radès</span><span class="card-meta">Ben Arous 💧 <b>9</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bejaoua" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bejaoua</span><span class="card-meta">Manouba 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Chaouat" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Chaouat</span><span class="card-meta">Manouba 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Douar Hicher" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Douar Hicher</span><span class="card-meta">Manouba 💧 <b>23</b> 🚱 <b>5</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Jedaïda" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Jedaïda</span><span class="card-meta">Manouba 💧 <b>11</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ksar Saïd" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ksar Saïd</span><span class="card-meta">Manouba 💧 <b>8</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Manouba Ville / Denden" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Manouba Ville / Denden</span><span class="card-meta">Manouba 💧 <b>22</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mornaguia / Borj El Amri" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mornaguia / Borj El Amri</span><span class="card-meta">Manouba 💧 <b>11</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Oued Ellil" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Oued Ellil</span><span class="card-meta">Manouba 💧 <b>12</b> 🚱 <b>7</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Oued Gueriana / Denden" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Oued Gueriana / Denden</span><span class="card-meta">Manouba 💧 <b>11</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sanhaja" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sanhaja</span><span class="card-meta">Manouba 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sidi Amor" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sidi Amor</span><span class="card-meta">Manouba 💧 <b>7</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Tebourba" data-status="good" data-gov="Manouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Tebourba</span><span class="card-meta">Manouba 💧 <b>6</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Béja Ville" data-status="good" data-gov="Béja"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Béja Ville</span><span class="card-meta">Béja 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Medjez el-Bab" data-status="bad" data-gov="Béja"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Medjez el-Bab</span><span class="card-meta">Béja 💧 <b>1</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Nefza / Amdoun" data-status="good" data-gov="Béja"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Nefza / Amdoun</span><span class="card-meta">Béja 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Téboursouk" data-status="bad" data-gov="Béja"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Téboursouk</span><span class="card-meta">Béja 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Testour" data-status="good" data-gov="Béja"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Testour</span><span class="card-meta">Béja 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Thibar" data-status="wait" data-gov="Béja"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Thibar</span><span class="card-meta">Béja 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bizerte Ville" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bizerte Ville</span><span class="card-meta">Bizerte 💧 <b>4</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cap Zbib" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cap Zbib</span><span class="card-meta">Bizerte 💧 <b>3</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Corniche Bizerte" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Corniche Bizerte</span><span class="card-meta">Bizerte 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Alia" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Alia</span><span class="card-meta">Bizerte 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Bhira" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Bhira</span><span class="card-meta">Bizerte 💧 <b>9</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Errimel" data-status="wait" data-gov="Bizerte"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Errimel</span><span class="card-meta">Bizerte 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ghar El Melh / Utique" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ghar El Melh / Utique</span><span class="card-meta">Bizerte 💧 <b>8</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Jarzouna" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Jarzouna</span><span class="card-meta">Bizerte 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mateur" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mateur</span><span class="card-meta">Bizerte 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Menzel Abderrahmen" data-status="bad" data-gov="Bizerte"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Menzel Abderrahmen</span><span class="card-meta">Bizerte 💧 <b>4</b> 🚱 <b>7</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Menzel Bourguiba" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Menzel Bourguiba</span><span class="card-meta">Bizerte 💧 <b>8</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Menzel Jemil" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Menzel Jemil</span><span class="card-meta">Bizerte 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Metline" data-status="bad" data-gov="Bizerte"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Metline</span><span class="card-meta">Bizerte 💧 <b>5</b> 🚱 <b>5</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Raf Raf" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Raf Raf</span><span class="card-meta">Bizerte 💧 <b>3</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Ras Jebel" data-status="bad" data-gov="Bizerte"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Ras Jebel</span><span class="card-meta">Bizerte 💧 <b>7</b> 🚱 <b>7</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Sejnane" data-status="bad" data-gov="Bizerte"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Sejnane</span><span class="card-meta">Bizerte 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sidi Salem" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sidi Salem</span><span class="card-meta">Bizerte 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sounine" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sounine</span><span class="card-meta">Bizerte 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Tinja" data-status="good" data-gov="Bizerte"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Tinja</span><span class="card-meta">Bizerte 💧 <b>5</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Touibia" data-status="wait" data-gov="Bizerte"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Touibia</span><span class="card-meta">Bizerte 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Hamma" data-status="good" data-gov="Gabès"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Hamma</span><span class="card-meta">Gabès 💧 <b>3</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Gabès Sud" data-status="good" data-gov="Gabès"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Gabès Sud</span><span class="card-meta">Gabès 💧 <b>5</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Gabès Ville" data-status="bad" data-gov="Gabès"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Gabès Ville</span><span class="card-meta">Gabès 💧 <b>3</b> 🚱 <b>4</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mareth" data-status="good" data-gov="Gabès"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mareth</span><span class="card-meta">Gabès 💧 <b>4</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Matmata" data-status="good" data-gov="Gabès"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Matmata</span><span class="card-meta">Gabès 💧 <b>3</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Métouia / Ghannouch" data-status="bad" data-gov="Gabès"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Métouia / Ghannouch</span><span class="card-meta">Gabès 💧 <b>2</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Oudhref" data-status="bad" data-gov="Gabès"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Oudhref</span><span class="card-meta">Gabès 💧 <b>2</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Tbelbou" data-status="bad" data-gov="Gabès"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Tbelbou</span><span class="card-meta">Gabès 💧 <b>3</b> 🚱 <b>5</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Zrig" data-status="bad" data-gov="Gabès"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Zrig</span><span class="card-meta">Gabès 💧 <b>0</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Guettar" data-status="good" data-gov="Gafsa"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Guettar</span><span class="card-meta">Gafsa 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Gafsa Ville" data-status="good" data-gov="Gafsa"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Gafsa Ville</span><span class="card-meta">Gafsa 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mdhilla" data-status="good" data-gov="Gafsa"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mdhilla</span><span class="card-meta">Gafsa 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Métlaoui" data-status="good" data-gov="Gafsa"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Métlaoui</span><span class="card-meta">Gafsa 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Redeyef / Moularès" data-status="bad" data-gov="Gafsa"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Redeyef / Moularès</span><span class="card-meta">Gafsa 💧 <b>1</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Aïn Draham" data-status="wait" data-gov="Jendouba"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Aïn Draham</span><span class="card-meta">Jendouba 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bou Salem" data-status="good" data-gov="Jendouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bou Salem</span><span class="card-meta">Jendouba 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ghardimaou" data-status="good" data-gov="Jendouba"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ghardimaou</span><span class="card-meta">Jendouba 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Jendouba Ville" data-status="wait" data-gov="Jendouba"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Jendouba Ville</span><span class="card-meta">Jendouba 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Tabarka" data-status="bad" data-gov="Jendouba"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Tabarka</span><span class="card-meta">Jendouba 💧 <b>0</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Bou Hajla / Nasrallah" data-status="bad" data-gov="Kairouan"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Bou Hajla / Nasrallah</span><span class="card-meta">Kairouan 💧 <b>6</b> 🚱 <b>11</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Hajeb El Ayoun" data-status="good" data-gov="Kairouan"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Hajeb El Ayoun</span><span class="card-meta">Kairouan 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Kairouan Ville" data-status="good" data-gov="Kairouan"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Kairouan Ville</span><span class="card-meta">Kairouan 💧 <b>9</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Oueslatia / Haffouz" data-status="bad" data-gov="Kairouan"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Oueslatia / Haffouz</span><span class="card-meta">Kairouan 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Sbikha" data-status="wait" data-gov="Kairouan"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Sbikha</span><span class="card-meta">Kairouan 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Fériana" data-status="bad" data-gov="Kasserine"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Fériana</span><span class="card-meta">Kasserine 💧 <b>0</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Kasserine Ville" data-status="good" data-gov="Kasserine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Kasserine Ville</span><span class="card-meta">Kasserine 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Sbeïtla" data-status="bad" data-gov="Kasserine"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Sbeïtla</span><span class="card-meta">Kasserine 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Sbiba / Foussana" data-status="bad" data-gov="Kasserine"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Sbiba / Foussana</span><span class="card-meta">Kasserine 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Thala" data-status="bad" data-gov="Kasserine"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Thala</span><span class="card-meta">Kasserine 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
@@ -390,177 +246,81 @@
 <button class="card bad" data-name="Kébili Ville" data-status="bad" data-gov="Kébili"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Kébili Ville</span><span class="card-meta">Kébili 💧 <b>3</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Souk Lahad" data-status="bad" data-gov="Kébili"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Souk Lahad</span><span class="card-meta">Kébili 💧 <b>4</b> 🚱 <b>9</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Dahmani" data-status="bad" data-gov="Le Kef"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Dahmani</span><span class="card-meta">Le Kef 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Jerissa" data-status="good" data-gov="Le Kef"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Jerissa</span><span class="card-meta">Le Kef 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Le Kef Ville" data-status="bad" data-gov="Le Kef"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Le Kef Ville</span><span class="card-meta">Le Kef 💧 <b>2</b> 🚱 <b>5</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Le Sers" data-status="bad" data-gov="Le Kef"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Le Sers</span><span class="card-meta">Le Kef 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Tajerouine" data-status="good" data-gov="Le Kef"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Tajerouine</span><span class="card-meta">Le Kef 💧 <b>5</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Chebba" data-status="good" data-gov="Mahdia"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Chebba</span><span class="card-meta">Mahdia 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Jem" data-status="good" data-gov="Mahdia"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Jem</span><span class="card-meta">Mahdia 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Ksour Essef" data-status="wait" data-gov="Mahdia"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Ksour Essef</span><span class="card-meta">Mahdia 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mahdia Ville" data-status="good" data-gov="Mahdia"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mahdia Ville</span><span class="card-meta">Mahdia 💧 <b>4</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Melloulèche" data-status="bad" data-gov="Mahdia"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Melloulèche</span><span class="card-meta">Mahdia 💧 <b>0</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Rejiche" data-status="good" data-gov="Mahdia"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Rejiche</span><span class="card-meta">Mahdia 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Salakta" data-status="bad" data-gov="Mahdia"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Salakta</span><span class="card-meta">Mahdia 💧 <b>2</b> 🚱 <b>4</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Sidi Alouane" data-status="wait" data-gov="Mahdia"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Sidi Alouane</span><span class="card-meta">Mahdia 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Souassi / Bou Merdes" data-status="bad" data-gov="Mahdia"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Souassi / Bou Merdes</span><span class="card-meta">Mahdia 💧 <b>0</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Ben Guerdane" data-status="bad" data-gov="Médenine"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Ben Guerdane</span><span class="card-meta">Médenine 💧 <b>0</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Béni Khedache" data-status="bad" data-gov="Médenine"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Béni Khedache</span><span class="card-meta">Médenine 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Boughrara" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Boughrara</span><span class="card-meta">Médenine 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Djerba Aghir" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Djerba Aghir</span><span class="card-meta">Médenine 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Djerba Ajim" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Djerba Ajim</span><span class="card-meta">Médenine 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Djerba El May" data-status="bad" data-gov="Médenine"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Djerba El May</span><span class="card-meta">Médenine 💧 <b>4</b> 🚱 <b>4</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Djerba Erriadh" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Djerba Erriadh</span><span class="card-meta">Médenine 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Djerba Guellala" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Djerba Guellala</span><span class="card-meta">Médenine 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Djerba Houmt Souk" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Djerba Houmt Souk</span><span class="card-meta">Médenine 💧 <b>12</b> 🚱 <b>6</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Djerba Mellita" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Djerba Mellita</span><span class="card-meta">Médenine 💧 <b>3</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Djerba Mezraya" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Djerba Mezraya</span><span class="card-meta">Médenine 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Djerba Midoun" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Djerba Midoun</span><span class="card-meta">Médenine 💧 <b>8</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Djerba Robbana" data-status="bad" data-gov="Médenine"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Djerba Robbana</span><span class="card-meta">Médenine 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Djerba Sedouikech" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Djerba Sedouikech</span><span class="card-meta">Médenine 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Djerba Sidi Mehrez (zone touristique)" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Djerba Sidi Mehrez (zone touristique)</span><span class="card-meta">Médenine 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Médenine Ville" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Médenine Ville</span><span class="card-meta">Médenine 💧 <b>11</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Zarzis" data-status="good" data-gov="Médenine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Zarzis</span><span class="card-meta">Médenine 💧 <b>7</b> 🚱 <b>7</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Bembla" data-status="bad" data-gov="Monastir"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Bembla</span><span class="card-meta">Monastir 💧 <b>0</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Béni Hassen" data-status="good" data-gov="Monastir"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Béni Hassen</span><span class="card-meta">Monastir 💧 <b>3</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Bouhjar" data-status="bad" data-gov="Monastir"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Bouhjar</span><span class="card-meta">Monastir 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Jemmal / Sahline" data-status="good" data-gov="Monastir"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Jemmal / Sahline</span><span class="card-meta">Monastir 💧 <b>5</b> 🚱 <b>7</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Khniss" data-status="good" data-gov="Monastir"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Khniss</span><span class="card-meta">Monastir 💧 <b>3</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Ksar Hellal" data-status="bad" data-gov="Monastir"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Ksar Hellal</span><span class="card-meta">Monastir 💧 <b>0</b> 🚱 <b>4</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Ksibet El Mediouni" data-status="bad" data-gov="Monastir"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Ksibet El Mediouni</span><span class="card-meta">Monastir 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Lamta" data-status="good" data-gov="Monastir"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Lamta</span><span class="card-meta">Monastir 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Menzel Kamel" data-status="good" data-gov="Monastir"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Menzel Kamel</span><span class="card-meta">Monastir 💧 <b>5</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Moknine" data-status="good" data-gov="Monastir"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Moknine</span><span class="card-meta">Monastir 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Monastir Ville / Skanes" data-status="wait" data-gov="Monastir"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Monastir Ville / Skanes</span><span class="card-meta">Monastir 💧 <b>5</b> 🚱 <b>5</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Ouardanine" data-status="bad" data-gov="Monastir"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Ouardanine</span><span class="card-meta">Monastir 💧 <b>0</b> 🚱 <b>4</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Sayada" data-status="bad" data-gov="Monastir"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Sayada</span><span class="card-meta">Monastir 💧 <b>1</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Téboulba / Bekalta" data-status="bad" data-gov="Monastir"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Téboulba / Bekalta</span><span class="card-meta">Monastir 💧 <b>3</b> 🚱 <b>5</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Touza" data-status="good" data-gov="Monastir"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Touza</span><span class="card-meta">Monastir 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Zeramdine / Ouerdanine" data-status="good" data-gov="Monastir"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Zeramdine / Ouerdanine</span><span class="card-meta">Monastir 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Azmour" data-status="bad" data-gov="Nabeul"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Azmour</span><span class="card-meta">Nabeul 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Béni Khalled" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Béni Khalled</span><span class="card-meta">Nabeul 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bir Bouregba" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bir Bouregba</span><span class="card-meta">Nabeul 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Bir Challouf" data-status="wait" data-gov="Nabeul"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Bir Challouf</span><span class="card-meta">Nabeul 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bou Argoub" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bou Argoub</span><span class="card-meta">Nabeul 💧 <b>4</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité AFH Nabeul" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité AFH Nabeul</span><span class="card-meta">Nabeul 💧 <b>24</b> 🚱 <b>6</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Dar Allouch" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Dar Allouch</span><span class="card-meta">Nabeul 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Dar Chaâbane / Béni Khiar" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Dar Chaâbane / Béni Khiar</span><span class="card-meta">Nabeul 💧 <b>7</b> 🚱 <b>4</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Dar Chaâbane El Fehri" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Dar Chaâbane El Fehri</span><span class="card-meta">Nabeul 💧 <b>5</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="El Haouaria" data-status="bad" data-gov="Nabeul"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">El Haouaria</span><span class="card-meta">Nabeul 💧 <b>5</b> 🚱 <b>7</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="El Mida / El Somâa" data-status="bad" data-gov="Nabeul"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">El Mida / El Somâa</span><span class="card-meta">Nabeul 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Grombalia / Bou Argoub" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Grombalia / Bou Argoub</span><span class="card-meta">Nabeul 💧 <b>9</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Hammam Ghezaz" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Hammam Ghezaz</span><span class="card-meta">Nabeul 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Hammamet / Yasmine" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Hammamet / Yasmine</span><span class="card-meta">Nabeul 💧 <b>6</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Hammamet Nord" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Hammamet Nord</span><span class="card-meta">Nabeul 💧 <b>13</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Kélibia" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Kélibia</span><span class="card-meta">Nabeul 💧 <b>5</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Kerker" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Kerker</span><span class="card-meta">Nabeul 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Kerkouane" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Kerkouane</span><span class="card-meta">Nabeul 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Korba" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Korba</span><span class="card-meta">Nabeul 💧 <b>7</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Maâmoura" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Maâmoura</span><span class="card-meta">Nabeul 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Menzel Horr" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Menzel Horr</span><span class="card-meta">Nabeul 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Menzel Temime" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Menzel Temime</span><span class="card-meta">Nabeul 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Mrezga" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Mrezga</span><span class="card-meta">Nabeul 💧 <b>11</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Nabeul Ville" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Nabeul Ville</span><span class="card-meta">Nabeul 💧 <b>12</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Oued Souhil" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Oued Souhil</span><span class="card-meta">Nabeul 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sidi Daoud" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sidi Daoud</span><span class="card-meta">Nabeul 💧 <b>5</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Soliman / Menzel Bouzelfa" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Soliman / Menzel Bouzelfa</span><span class="card-meta">Nabeul 💧 <b>5</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Soliman Erriadh" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Soliman Erriadh</span><span class="card-meta">Nabeul 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Takelsa" data-status="bad" data-gov="Nabeul"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Takelsa</span><span class="card-meta">Nabeul 💧 <b>1</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Tazarka" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Tazarka</span><span class="card-meta">Nabeul 💧 <b>4</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Zaouiet Djedidi" data-status="good" data-gov="Nabeul"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Zaouiet Djedidi</span><span class="card-meta">Nabeul 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Agareb" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Agareb</span><span class="card-meta">Sfax 💧 <b>4</b> 🚱 <b>6</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Bir Ali Ben Khalifa" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Bir Ali Ben Khalifa</span><span class="card-meta">Sfax 💧 <b>0</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Bouzayène" data-status="wait" data-gov="Sfax"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Bouzayène</span><span class="card-meta">Sfax 💧 <b>13</b> 🚱 <b>9</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Chaffar" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Chaffar</span><span class="card-meta">Sfax 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Chihia" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Chihia</span><span class="card-meta">Sfax 💧 <b>4</b> 🚱 <b>4</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Cité Chaker" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Cité Chaker</span><span class="card-meta">Sfax 💧 <b>1</b> 🚱 <b>6</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité El Bahri" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité El Bahri</span><span class="card-meta">Sfax 💧 <b>8</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité El Habib" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité El Habib</span><span class="card-meta">Sfax 💧 <b>10</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Cité El Ons" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Cité El Ons</span><span class="card-meta">Sfax 💧 <b>10</b> 🚱 <b>26</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Cité El Wafa" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Cité El Wafa</span><span class="card-meta">Sfax 💧 <b>2</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Cité Jardin (Sfax)" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Cité Jardin (Sfax)</span><span class="card-meta">Sfax 💧 <b>7</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="El Amra" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">El Amra</span><span class="card-meta">Sfax 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="El Ghraiba" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">El Ghraiba</span><span class="card-meta">Sfax 💧 <b>2</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Jebeniana / El Hencha" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Jebeniana / El Hencha</span><span class="card-meta">Sfax 💧 <b>3</b> 🚱 <b>4</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Kerkennah" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Kerkennah</span><span class="card-meta">Sfax 💧 <b>5</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Mahres" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Mahres</span><span class="card-meta">Sfax 💧 <b>3</b> 🚱 <b>8</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Route de Gremda" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Route de Gremda</span><span class="card-meta">Sfax 💧 <b>33</b> 🚱 <b>14</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Route de l'Aéroport" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Route de l'Aéroport</span><span class="card-meta">Sfax 💧 <b>20</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Route de Mahdia" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Route de Mahdia</span><span class="card-meta">Sfax 💧 <b>12</b> 🚱 <b>7</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Route de Saltnia" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Route de Saltnia</span><span class="card-meta">Sfax 💧 <b>26</b> 🚱 <b>24</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Route de Sidi Mansour" data-status="wait" data-gov="Sfax"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Route de Sidi Mansour</span><span class="card-meta">Sfax 💧 <b>17</b> 🚱 <b>15</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Route de Sokra" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Route de Sokra</span><span class="card-meta">Sfax 💧 <b>14</b> 🚱 <b>13</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Route de Teniour" data-status="wait" data-gov="Sfax"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Route de Teniour</span><span class="card-meta">Sfax 💧 <b>17</b> 🚱 <b>16</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Route de Tunis" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Route de Tunis</span><span class="card-meta">Sfax 💧 <b>13</b> 🚱 <b>15</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Route El Aïn" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Route El Aïn</span><span class="card-meta">Sfax 💧 <b>19</b> 🚱 <b>8</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Route Kaïd Mohamed" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Route Kaïd Mohamed</span><span class="card-meta">Sfax 💧 <b>5</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Route Lafrane" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Route Lafrane</span><span class="card-meta">Sfax 💧 <b>26</b> 🚱 <b>7</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Route Menzel Chaker" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Route Menzel Chaker</span><span class="card-meta">Sfax 💧 <b>29</b> 🚱 <b>12</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Route Mharza" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Route Mharza</span><span class="card-meta">Sfax 💧 <b>6</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Route Tbolbi" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Route Tbolbi</span><span class="card-meta">Sfax 💧 <b>5</b> 🚱 <b>6</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sakiet Eddaïer" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sakiet Eddaïer</span><span class="card-meta">Sfax 💧 <b>9</b> 🚱 <b>13</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Sakiet Ezzit" data-status="wait" data-gov="Sfax"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Sakiet Ezzit</span><span class="card-meta">Sfax 💧 <b>15</b> 🚱 <b>14</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sfax Ville" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sfax Ville</span><span class="card-meta">Sfax 💧 <b>8</b> 🚱 <b>6</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Sidi Salah" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Sidi Salah</span><span class="card-meta">Sfax 💧 <b>1</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Skhira" data-status="bad" data-gov="Sfax"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Skhira</span><span class="card-meta">Sfax 💧 <b>1</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Thyna / Route Gabès" data-status="good" data-gov="Sfax"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Thyna / Route Gabès</span><span class="card-meta">Sfax 💧 <b>13</b> 🚱 <b>4</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Jilma" data-status="wait" data-gov="Sidi Bouzid"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Jilma</span><span class="card-meta">Sidi Bouzid 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Meknassy / Mezzouna" data-status="bad" data-gov="Sidi Bouzid"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Meknassy / Mezzouna</span><span class="card-meta">Sidi Bouzid 💧 <b>3</b> 🚱 <b>5</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ouled Haffouz" data-status="good" data-gov="Sidi Bouzid"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ouled Haffouz</span><span class="card-meta">Sidi Bouzid 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Regueb" data-status="bad" data-gov="Sidi Bouzid"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Regueb</span><span class="card-meta">Sidi Bouzid 💧 <b>2</b> 🚱 <b>4</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Sidi Ali Ben Aoun" data-status="bad" data-gov="Sidi Bouzid"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Sidi Ali Ben Aoun</span><span class="card-meta">Sidi Bouzid 💧 <b>1</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sidi Bouzid Ville" data-status="good" data-gov="Sidi Bouzid"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sidi Bouzid Ville</span><span class="card-meta">Sidi Bouzid 💧 <b>6</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Souk Jedid" data-status="wait" data-gov="Sidi Bouzid"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Souk Jedid</span><span class="card-meta">Sidi Bouzid 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Bou Arada / Gaâfour" data-status="bad" data-gov="Siliana"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Bou Arada / Gaâfour</span><span class="card-meta">Siliana 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="El Krib" data-status="wait" data-gov="Siliana"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">El Krib</span><span class="card-meta">Siliana 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Gaâfour" data-status="bad" data-gov="Siliana"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Gaâfour</span><span class="card-meta">Siliana 💧 <b>1</b> 🚱 <b>7</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Makthar" data-status="bad" data-gov="Siliana"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Makthar</span><span class="card-meta">Siliana 💧 <b>1</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Rouhia" data-status="wait" data-gov="Siliana"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Rouhia</span><span class="card-meta">Siliana 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Siliana Ville" data-status="good" data-gov="Siliana"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Siliana Ville</span><span class="card-meta">Siliana 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Akouda" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Akouda</span><span class="card-meta">Sousse 💧 <b>5</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Bouficha" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bouficha</span><span class="card-meta">Sousse 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Chott Meriem" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Chott Meriem</span><span class="card-meta">Sousse 💧 <b>7</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Cité Erriadh" data-status="bad" data-gov="Sousse"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Cité Erriadh</span><span class="card-meta">Sousse 💧 <b>1</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Enfidha / Hergla" data-status="bad" data-gov="Sousse"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Enfidha / Hergla</span><span class="card-meta">Sousse 💧 <b>1</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Hammam Sousse" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Hammam Sousse</span><span class="card-meta">Sousse 💧 <b>15</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Jawhara" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Jawhara</span><span class="card-meta">Sousse 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Kalâa Kebira" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Kalâa Kebira</span><span class="card-meta">Sousse 💧 <b>3</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Kalâa Seghira" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Kalâa Seghira</span><span class="card-meta">Sousse 💧 <b>8</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Khézama" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Khézama</span><span class="card-meta">Sousse 💧 <b>3</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Khézama Ouest" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Khézama Ouest</span><span class="card-meta">Sousse 💧 <b>3</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ksibet Thrayet" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ksibet Thrayet</span><span class="card-meta">Sousse 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Messadine" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Messadine</span><span class="card-meta">Sousse 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Msaken" data-status="bad" data-gov="Sousse"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Msaken</span><span class="card-meta">Sousse 💧 <b>3</b> 🚱 <b>3</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Port El Kantaoui" data-status="bad" data-gov="Sousse"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Port El Kantaoui</span><span class="card-meta">Sousse 💧 <b>1</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sahloul" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sahloul</span><span class="card-meta">Sousse 💧 <b>1</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sahloul 3" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sahloul 3</span><span class="card-meta">Sousse 💧 <b>6</b> 🚱 <b>2</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sahloul 4" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sahloul 4</span><span class="card-meta">Sousse 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sidi Abdelhamid" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sidi Abdelhamid</span><span class="card-meta">Sousse 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Sidi Bou Ali / Kondar" data-status="bad" data-gov="Sousse"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Sidi Bou Ali / Kondar</span><span class="card-meta">Sousse 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Sousse Ville" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Sousse Ville</span><span class="card-meta">Sousse 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Zaouiet Sousse" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Zaouiet Sousse</span><span class="card-meta">Sousse 💧 <b>3</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Bir Lahmar" data-status="wait" data-gov="Tataouine"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Bir Lahmar</span><span class="card-meta">Tataouine 💧 <b>0</b> 🚱 <b>0</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Ghomrassen" data-status="good" data-gov="Tataouine"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Ghomrassen</span><span class="card-meta">Tataouine 💧 <b>9</b> 🚱 <b>7</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Remada" data-status="bad" data-gov="Tataouine"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Remada</span><span class="card-meta">Tataouine 💧 <b>0</b> 🚱 <b>2</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Tataouine Ville" data-status="bad" data-gov="Tataouine"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Tataouine Ville</span><span class="card-meta">Tataouine 💧 <b>2</b> 🚱 <b>8</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Degache" data-status="good" data-gov="Tozeur"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Degache</span><span class="card-meta">Tozeur 💧 <b>3</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Hamma du Jérid" data-status="good" data-gov="Tozeur"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Hamma du Jérid</span><span class="card-meta">Tozeur 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Nefta" data-status="good" data-gov="Tozeur"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Nefta</span><span class="card-meta">Tozeur 💧 <b>4</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="Tozeur Ville" data-status="good" data-gov="Tozeur"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Tozeur Ville</span><span class="card-meta">Tozeur 💧 <b>2</b> 🚱 <b>0</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Bir Mchergua" data-status="bad" data-gov="Zaghouan"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Bir Mchergua</span><span class="card-meta">Zaghouan 💧 <b>3</b> 🚱 <b>5</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
-<button class="card" data-name="El Fahs" data-status="good" data-gov="Zaghouan"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">El Fahs</span><span class="card-meta">Zaghouan 💧 <b>2</b> 🚱 <b>3</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Nadhour / Saouaf" data-status="bad" data-gov="Zaghouan"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Nadhour / Saouaf</span><span class="card-meta">Zaghouan 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card bad" data-name="Zaghouan Ville" data-status="bad" data-gov="Zaghouan"><span class="card-icon">🚱</span><span class="card-main"><span class="card-title">Zaghouan Ville</span><span class="card-meta">Zaghouan 💧 <b>0</b> 🚱 <b>1</b></span></span><span class="card-status bad">coupée</span><span class="chevron">&rsaquo;</span></button>
 <button class="card wait" data-name="Zriba / Hammam Zriba" data-status="wait" data-gov="Zaghouan"><span class="card-icon">⏳</span><span class="card-main"><span class="card-title">Zriba / Hammam Zriba</span><span class="card-meta">Zaghouan 💧 <b>0</b> 🚱 <b>2</b></span></span><span class="card-status wait">à vérifier</span><span class="chevron">&rsaquo;</span></button>
-</section>
-    <div class="tip">💡 <div><strong>Participez à la mise à jour</strong>Vous êtes dans un quartier différent ? Signalez l’état de l’eau pour aider vos voisins.</div></div>
-    <footer><span>Dernière mise à jour : il y a 8 minutes</span><span>🇹🇳 Fait pour la Tunisie</span></footer>
+    </section>
+
+    <div class="tip"><div><strong>شارك في التحديث</strong>توجد منطقتك مقطوعة أو متوفرة؟ أبلغ عنها لمساعدة جيرانك في الحيّ.</div></div>
+    <footer class="footer"><span>آخر تحديث: الآن</span><span>🇹🇳 صُنع من أجل تونس</span></footer>
   </main>
 
   <div class="toast" id="toast"></div>
 
   <div class="modal-overlay" id="loginModal">
     <div class="modal">
-      <h3>🔒 تسجيل الدخول</h3>
+      <h3>تسجيل الدخول</h3>
       <p>أدخل بيانات الحساب للوصول إلى لوحة التحكم</p>
       <label>اسم المستخدم</label>
       <input type="text" id="loginUser" placeholder="User name" autocomplete="off" />
@@ -576,20 +336,20 @@
   <div class="modal-overlay" id="voteModal">
     <div class="modal">
       <h3 id="voteZoneName">Quartier</h3>
-      <p>Comment est l'eau chez vous en ce moment ?</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;">
-        <button class="btn-success" onclick="submitVote('good')" style="padding:14px 10px;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;">💧 Ça coule</button>
-        <button class="btn-danger" onclick="submitVote('bad')" style="padding:14px 10px;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;">🚱 Coupée</button>
+      <p>كيف هي حالة الماء عندك الآن؟</p>
+      <div class="vote-grid">
+        <button class="btn-success" onclick="submitVote('good')">💧 ماء متوفر</button>
+        <button class="btn-danger" onclick="submitVote('bad')">🚱 مقطوع</button>
       </div>
       <div class="modal-actions">
-        <button class="btn-cancel" onclick="closeVoteModal()">Annuler</button>
+        <button class="btn-cancel" onclick="closeVoteModal()">إلغاء</button>
       </div>
     </div>
   </div>
 
   <div class="modal-overlay" id="addZoneModal">
     <div class="modal">
-      <h3 id="zoneModalTitle">➕ إضافة منطقة جديدة</h3>
+      <h3 id="zoneModalTitle">إضافة منطقة جديدة</h3>
       <label>اسم المنطقة</label>
       <input type="text" id="zoneName" placeholder="مثال: Bab El Khadhra" />
       <label>الحالة</label>
@@ -609,7 +369,7 @@
     </div>
   </div>
 
-  <main class="page" id="mainPage" style="display:none;">
+  <main class="page admin-panel" id="mainPage">
     <div class="admin-header">
       <h2>⚙ إدارة الموقع</h2>
       <div style="display:flex;align-items:center;gap:8px;">
@@ -625,44 +385,43 @@
     <div class="admin-section active" id="tab-zones">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
         <span style="font-size:12px;color:var(--muted);">قائمة المناطق المسجلة</span>
-        <button class="btn-success" onclick="openAddZone()" style="padding:6px 14px;border:none;border-radius:8px;font-size:11px;cursor:pointer;font-weight:700;">+ منطقة جديدة</button>
+        <button class="btn-success" onclick="openAddZone()" style="padding:7px 14px;border:none;border-radius:9px;font-size:11px;cursor:pointer;font-weight:700;">+ منطقة جديدة</button>
       </div>
       <div class="zone-list" id="adminZoneList"></div>
-    </div>
-    <div class="admin-section" id="tab-add">
-      <div class="modal" style="border:none;padding:0;background:transparent;">
-        <h3 id="zoneModalTitle2">➕ إضافة منطقة جديدة</h3>
-        <label>اسم المنطقة</label>
-        <input type="text" id="zoneName2" placeholder="مثال: Ariana Centre" />
-        <label>الحالة</label>
-        <select id="zoneStatus2">
-          <option value="good">ماء متوفر</option>
-          <option value="bad">مقطوعة</option>
-          <option value="wait">قيد التحقق</option>
-        </select>
-        <label>عدد البلاغات</label>
-        <input type="number" id="zoneReports2" placeholder="0" min="0" />
-        <label>ملاحظات (اختياري)</label>
-        <textarea id="zoneNotes2" placeholder="أي ملاحظات إضافية..."></textarea>
-        <div class="modal-actions">
-          <button class="btn-cancel" onclick="clearAdminForm()">مسح</button>
-          <button class="btn-success" onclick="saveZoneFromAdmin()">إضافة المنطقة</button>
-        </div>
-      </div>
-    </div>
-    <div class="admin-section" id="tab-stats">
-      <div class="quick-stats" style="margin-bottom:16px;">
-        <div class="stat live"><strong id="adminLiveCount">0</strong><span>ماء متوفر</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:18px;">
+        <div class="stat live"><strong id="adminLiveCount">0</strong><span>متوفر</span></div>
         <div class="stat cut"><strong id="adminCutCount">0</strong><span>مقطوع</span></div>
         <div class="stat wait"><strong id="adminWaitCount">0</strong><span>قيد التحقق</span></div>
       </div>
-      <div style="text-align:center;padding:20px;color:var(--muted);font-size:11px;">
-        <p>إجمالي المناطق: <strong id="adminTotalZones" style="color:var(--text);">0</strong></p>
-        <p>آخر تحديث: <strong id="adminLastUpdate" style="color:var(--text);">-</strong></p>
+    </div>
+    <div class="admin-section" id="tab-add">
+      <h3 id="zoneModalTitle2">إضافة منطقة جديدة</h3>
+      <label>اسم المنطقة</label>
+      <input type="text" id="zoneName2" placeholder="مثال: Ariana Centre" />
+      <label>الحالة</label>
+      <select id="zoneStatus2">
+        <option value="good">ماء متوفر</option>
+        <option value="bad">مقطوعة</option>
+        <option value="wait">قيد التحقق</option>
+      </select>
+      <label>عدد البلاغات</label>
+      <input type="number" id="zoneReports2" placeholder="0" min="0" />
+      <label>ملاحظات (اختياري)</label>
+      <textarea id="zoneNotes2" placeholder="أي ملاحظات إضافية..."></textarea>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="clearAdminForm()">مسح</button>
+        <button class="btn-success" onclick="saveZoneFromAdmin()">إضافة المنطقة</button>
+        <button class="btn-cancel" onclick="closeAdmin()" style="border-color:#4c2029;color:var(--red);">إغلاق</button>
       </div>
     </div>
-    <button class="btn-cancel" onclick="closeAdmin()" style="width:100%;margin-top:20px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font-size:12px;cursor:pointer;">العودة للرئيسية</button>
+    <div class="admin-section" id="tab-stats">
+      <div style="display:grid;grid-template-columns:1fr;gap:10px;">
+        <div class="stat live"><strong id="adminTotalZones">0</strong><span>إجمالي المناطق</span></div>
+        <div class="stat"><strong id="adminLastUpdate">–</strong><span>آخر تحديث</span></div>
+      </div>
+    </div>
   </main>
+
   <script>
     const $ = id => document.getElementById(id);
     const ADMIN_USER = 'pirate';
@@ -676,7 +435,7 @@
     function saveLocal(votes) { try { localStorage.setItem(STORE_KEY, JSON.stringify(votes)); } catch (e) {} }
     const LOCALV = loadLocal();
 
-    function notify(message) { $('toast').textContent = message; $('toast').classList.add('show'); setTimeout(() => $('toast').classList.remove('show'), 2500); }
+    function notify(message) { $('toast').textContent = message; $('toast').classList.add('show'); setTimeout(() => $('toast').classList.remove('show'), 2600); }
     function refresh() {
       const q = $('search').value.trim().toLowerCase(), f = $('filter').value;
       let visible = 0;
@@ -684,9 +443,11 @@
         const show = (!q || card.dataset.name.toLowerCase().includes(q)) && (f === 'all' || card.dataset.status === f);
         card.style.display = show ? 'flex' : 'none'; if (show) visible++;
       });
-      $('resultCount').textContent = visible + ' zone' + (visible > 1 ? 's' : '') + ' suivie' + (visible > 1 ? 's' : '');
+      $('resultCount').textContent = visible + ' منطقة' + (visible > 1 ? ' متابعة' : '');
     }
-    $('search').addEventListener('input', refresh); $('filter').addEventListener('change', refresh);
+    $('search').addEventListener('input', refresh);
+    $('filter').addEventListener('change', refresh);
+
     function openVoteModal(card) {
       votingCard = card;
       $('voteZoneName').textContent = card.querySelector('.card-title').textContent;
@@ -705,7 +466,6 @@
       }
       card.dataset.status = status;
       card.className = 'card' + (status !== 'good' ? ' ' + status : '');
-      card.querySelector('.card-status').textContent = '';
       const el = card.querySelector('.card-status');
       el.className = 'card-status ' + status;
       el.textContent = status === 'good' ? 'ماء متوفر' : status === 'bad' ? 'مقطوعة' : 'قيد التحقق';
@@ -734,8 +494,9 @@
           applyVotes(data.votes || {});
           notify('✅ شكرًا ' + zone + ' — ' + (status === 'good' ? 'ماء متوفر' : 'مقطوعة'));
         })
-        .catch(() => { notify('✅ Signalement enregistré (hors connexion)'); });
+        .catch(() => { notify('✅ تم تسجيل البلاغ'); });
     }
+    $('voteModal').addEventListener('click', e => { if (e.target === $('voteModal')) closeVoteModal(); });
 
     function applyVotes(serverVotes) {
       document.querySelectorAll('.card').forEach(card => {
@@ -765,6 +526,10 @@
       $('liveCount').textContent = live;
       $('cutCount').textContent = cut;
       $('waitCount').textContent = wait;
+      $('qAll').textContent = cards.length;
+      $('qGood').textContent = live;
+      $('qBad').textContent = cut;
+      $('qWait').textContent = wait;
     }
 
     const BASE = {};
@@ -800,26 +565,23 @@
         $('loginPass').value = '';
       }
     }
-
     $('loginPass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
     $('loginUser').addEventListener('keydown', e => { if (e.key === 'Enter') $('loginPass').focus(); });
 
     function openAdmin() {
       document.querySelector('.page').style.display = 'none';
-      $('mainPage').style.display = 'block';
+      $('mainPage').classList.add('show');
       renderAdminZones();
       updateAdminStats();
     }
-
     function closeAdmin() {
       adminLoggedIn = false;
-      $('mainPage').style.display = 'none';
+      $('mainPage').classList.remove('show');
       document.querySelector('.page').style.display = '';
     }
-
     function adminLogout() {
       adminLoggedIn = false;
-      $('mainPage').style.display = 'none';
+      $('mainPage').classList.remove('show');
       document.querySelector('.page').style.display = '';
       notify('تم تسجيل الخروج');
     }
@@ -866,11 +628,8 @@
 
     function openAddZone() {
       editingZoneIndex = -1;
-      $('zoneName2').value = '';
-      $('zoneStatus2').value = 'good';
-      $('zoneReports2').value = '0';
-      $('zoneNotes2').value = '';
-      $('zoneModalTitle2').textContent = '➕ إضافة منطقة جديدة';
+      clearAdminForm();
+      $('zoneModalTitle2').textContent = 'إضافة منطقة جديدة';
       switchAdminTab('add');
       document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.admin-tab')[1].classList.add('active');
@@ -884,7 +643,7 @@
       const reportsMatch = card.querySelector('.card-meta').textContent.match(/\d+/);
       $('zoneReports2').value = reportsMatch ? reportsMatch[0] : '0';
       $('zoneNotes2').value = '';
-      $('zoneModalTitle2').textContent = '✏ تعديل المنطقة';
+      $('zoneModalTitle2').textContent = 'تعديل المنطقة';
       switchAdminTab('add');
       document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.admin-tab')[1].classList.add('active');
@@ -897,6 +656,7 @@
       card.remove();
       renderAdminZones();
       updateAdminStats();
+      updateCounts();
       refresh();
       notify('تم حذف: ' + name);
     }
@@ -906,7 +666,6 @@
       if (!name) { notify('أدخل اسم المنطقة'); return; }
       const status = $('zoneStatus2').value;
       const reports = $('zoneReports2').value || '0';
-      const icons = { good: '', bad: '', wait: '' };
       const labels = { good: 'ماء متوفر', bad: 'مقطوعة', wait: 'قيد التحقق' };
 
       if (editingZoneIndex >= 0) {
@@ -914,12 +673,12 @@
         card.dataset.name = name;
         card.dataset.status = status;
         card.className = 'card' + (status !== 'good' ? ' ' + status : '');
-        card.querySelector('.card-icon').textContent = icons[status];
+        card.querySelector('.card-icon').textContent = status === 'good' ? '💧' : status === 'bad' ? '🚱' : '⏳';
         card.querySelector('.card-title').textContent = name;
-        card.querySelector('.card-meta').innerHTML = '💬 <b>' + reports + '</b> · 🕘 للآن';
-        const statusEl = card.querySelector('.card-status');
-        statusEl.className = 'card-status ' + status;
-        statusEl.textContent = labels[status];
+        card.querySelector('.card-meta').innerHTML = '💬 <b>' + reports + '</b> · للآن';
+        const el = card.querySelector('.card-status');
+        el.className = 'card-status ' + status;
+        el.textContent = labels[status];
         notify('تم تعديل: ' + name);
       } else {
         const card = document.createElement('button');
@@ -927,17 +686,16 @@
         card.dataset.name = name;
         card.dataset.status = status;
         card.dataset.gov = 'Zone';
-        card.innerHTML = '<span class="card-icon">' + icons[status] + '</span><span class="card-main"><span class="card-title">' + name + '</span><span class="card-meta">💬 <b>' + reports + '</b> · 🕘 للآن</span></span><span class="card-status ' + status + '">' + labels[status] + '</span><span class="chevron">›</span>';
+        card.innerHTML = '<span class="card-icon">' + (status === 'good' ? '💧' : status === 'bad' ? '🚱' : '⏳') + '</span><span class="card-main"><span class="card-title">' + name + '</span><span class="card-meta">💬 <b>' + reports + '</b> · للآن</span></span><span class="card-status ' + status + '">' + labels[status] + '</span>';
         card.addEventListener('click', () => openVoteModal(card));
         $('feed').appendChild(card);
         notify('تمت إضافة: ' + name);
       }
       editingZoneIndex = -1;
-      $('zoneName2').value = '';
-      $('zoneReports2').value = '0';
-      $('zoneNotes2').value = '';
+      clearAdminForm();
       renderAdminZones();
       updateAdminStats();
+      updateCounts();
       refresh();
     }
 
@@ -950,7 +708,15 @@
     }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('loginModal'); closeModal('addZoneModal'); closeVoteModal(); } });
-    $('voteModal').addEventListener('click', e => { if (e.target === $('voteModal')) closeVoteModal(); });
+
+    document.getElementById('tabs').querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        $('filter').value = tab.dataset.v;
+        refresh();
+      });
+    });
 
     (function arabize() {
       document.querySelectorAll('.card').forEach(card => {
@@ -964,27 +730,7 @@
           meta.textContent = (card.dataset.gov || 'Zone') + ' · ✔ ' + good + ' ✖ ' + bad;
         }
       });
-    })();
-
-    (function quickFilter() {
-      if (!$('quickTabs')) return;
-      function syncCounts() {
-        let all = 0, good = 0, bad = 0, wait = 0;
-        document.querySelectorAll('.card').forEach(c => {
-          all++;
-          if (c.dataset.status === 'good') good++; else if (c.dataset.status === 'bad') bad++; else wait++;
-        });
-        $('qAll').textContent = all; $('qGood').textContent = good; $('qBad').textContent = bad; $('qWait').textContent = wait;
-      }
-      document.querySelectorAll('.qtab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          document.querySelectorAll('.qtab').forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          $('filter').value = tab.dataset.v;
-          refresh();
-        });
-      });
-      syncCounts();
+      updateCounts();
     })();
   </script>
 </body>
