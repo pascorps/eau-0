@@ -110,6 +110,39 @@
     .how .step b { display:block; font-size:13.5px; margin-bottom:4px; }
     .how .step p { font-size:11px; color:var(--muted); line-height:1.6; }
 
+    .sec { margin:26px 0 0; }
+    .sec-head { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .sec-icon { width:44px; height:44px; flex:none; display:grid; place-items:center; border-radius:14px; background:linear-gradient(150deg, var(--blue-soft), var(--surface2)); border:1px solid #1d4a63; color:var(--blue); }
+    .sec-icon svg { width:24px; height:24px; }
+    .sec-head h2 { font-size:18px; font-weight:900; }
+    .sec-head p { font-size:11px; color:var(--muted); margin-top:2px; }
+
+    .sos-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:11px; }
+    .sos-card { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:15px; display:flex; flex-direction:column; gap:8px; transition:transform .18s, border-color .18s; }
+    .sos-card:hover { transform:translateY(-2px); border-color:var(--blue); }
+    .sos-card .lbl { font-size:10px; color:var(--muted); font-weight:700; letter-spacing:.3px; }
+    .sos-card .val { font-size:15px; font-weight:900; color:var(--text); direction:ltr; text-align:left; }
+    .sos-card .call { display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:9px; border-radius:10px; border:none; background:linear-gradient(135deg,var(--green),#2fd4a8); color:#03211a; font-size:12px; font-weight:800; cursor:pointer; text-decoration:none; }
+    .sos-card .call svg { width:15px; height:15px; }
+
+    .map-strip { display:flex; align-items:center; gap:22px; background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:22px; margin-top:26px; }
+    .map-strip .tnmap { width:120px; height:150px; flex:none; animation:glow2 4s ease-in-out infinite; filter:drop-shadow(0 6px 18px rgba(36,195,255,.35)); }
+    .map-strip .info { flex:1; min-width:0; }
+    .map-strip .info b { display:block; font-size:16px; margin-bottom:6px; }
+    .map-strip .info p { font-size:12px; color:var(--muted); line-height:1.8; }
+
+    .share { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:20px; }
+    .share a, .share button { display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:12px; border:1px solid var(--line); background:var(--surface); color:var(--text); font-size:12.5px; font-weight:700; cursor:pointer; text-decoration:none; transition:.16s; }
+    .share a:hover, .share button:hover { border-color:var(--blue); color:var(--blue); transform:translateY(-1px); }
+    .share a svg, .share button svg { width:17px; height:17px; }
+    .share .wa:hover { border-color:#25D366; color:#25D366; }
+    .share .fb:hover { border-color:#1877F2; color:#1877F2; }
+
+    .disclaimer { margin-top:22px; padding:13px 15px; border:1px dashed #2b5a6d; border-radius:13px; background:rgba(36,195,255,.04); color:var(--muted); font-size:11px; line-height:1.8; }
+    .disclaimer b { color:#dcf3fd; }
+    [data-theme="light"] .disclaimer b { color:#124a68; }
+    [data-theme="light"] .disclaimer { border-color:#9cc6de; }
+
     .wave { position:fixed; left:0; right:0; bottom:0; height:140px; z-index:0; pointer-events:none; opacity:.35; }
     .wave svg { position:absolute; bottom:0; width:200%; }
     .bubbles { position:fixed; inset:0; overflow:hidden; z-index:0; pointer-events:none; }
@@ -216,8 +249,8 @@
     [data-theme="light"] .tab.active { color:#fff; }
     [data-theme="light"] .wave { opacity:.22; }
 
-    @media (max-width:720px) { .page { padding:20px 14px 40px; } .tabs { grid-template-columns:repeat(4,1fr); gap:6px; } .tab { font-size:11px; padding:12px 4px; } .feed { grid-template-columns:repeat(2,1fr); gap:10px; } .tools { flex-direction:column; } .filter { padding:12px; } .how { grid-template-columns:1fr 1fr 1fr; gap:8px; } .how .step { padding:14px 10px; } .how .step p { font-size:10px; } }
-    @media (max-width:520px) { .page { padding:16px 12px 36px; } .hero { padding:26px 14px 30px; } .stats { gap:8px; } .stat { padding:16px 10px; } .brand-name { font-size:16px; } .feed { grid-template-columns:1fr; gap:11px; } .card { min-height:86px; padding:15px; } .card-title { font-size:15px; } .card-meta { font-size:11px; } .badge { font-size:10.5px; padding:8px 12px; } .search { padding:13px 14px; font-size:14px; } .topbar { margin-bottom:22px; } .ticker .tag { display:none; } .how { grid-template-columns:1fr; gap:9px; } }
+    @media (max-width:720px) { .page { padding:20px 14px 40px; } .tabs { grid-template-columns:repeat(4,1fr); gap:6px; } .tab { font-size:11px; padding:12px 4px; } .feed { grid-template-columns:repeat(2,1fr); gap:10px; } .tools { flex-direction:column; } .filter { padding:12px; } .how { grid-template-columns:1fr 1fr 1fr; gap:8px; } .how .step { padding:14px 10px; } .how .step p { font-size:10px; } .map-strip { flex-direction:column; text-align:center; gap:14px; } .map-strip .tnmap { width:100px; height:125px; } .map-strip .info p { font-size:11.5px; } }
+    @media (max-width:520px) { .page { padding:16px 12px 36px; } .hero { padding:26px 14px 30px; } .stats { gap:8px; } .stat { padding:16px 10px; } .brand-name { font-size:16px; } .feed { grid-template-columns:1fr; gap:11px; } .card { min-height:86px; padding:15px; } .card-title { font-size:15px; } .card-meta { font-size:11px; } .badge { font-size:10.5px; padding:8px 12px; } .search { padding:13px 14px; font-size:14px; } .topbar { margin-bottom:22px; } .ticker .tag { display:none; } .how { grid-template-columns:1fr; gap:9px; } .sos-grid { grid-template-columns:1fr 1fr; } .share { justify-content:stretch; } .share a, .share button { flex:1; justify-content:center; } }
   </style>
 </head>
 <body>
@@ -393,6 +426,53 @@
       <div class="step"><div class="n">2</div><b>أبلغ الأوضاع</b><p>اضغط على المنطقة واختر: ماء متوفر أم مقطوع.</p></div>
       <div class="step"><div class="n">3</div><b>ساعد جيرانك</b><p>تنتشر بلاغاتك لحظة بلحظة لتنبيه من حولك.</p></div>
     </section>
+
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><h2>أرقام الاستعجالات والمساعدة</h2><p>تواصل مع الجهات المختصة عند انقطاع الماء</p></div>
+      </div>
+      <div class="sos-grid">
+        <div class="sos-card"><span class="lbl">سونيد — المندوبية الجهوية</span><span class="val">71 123 000</span><a class="call" href="tel:71123000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> اتصل الآن</a></div>
+        <div class="sos-card"><span class="lbl">الاستعجالات الطبية</span><span class="val">190</span><a class="call" href="tel:190"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> اتصل الآن</a></div>
+        <div class="sos-card"><span class="lbl">الحماية المدنية</span><span class="val">198</span><a class="call" href="tel:198"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> اتصل الآن</a></div>
+        <div class="sos-card"><span class="lbl">الشرطة</span><span class="val">197</span><a class="call" href="tel:197"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> اتصل الآن</a></div>
+      </div>
+    </section>
+
+    <div class="map-strip">
+      <svg class="tnmap" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="tngrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#24c3ff"/><stop offset="1" stop-color="#0b9fe0"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#tngrad)" opacity=".92" d="M100 12 C118 18 132 34 138 52 C146 66 148 84 143 100 C150 112 156 126 154 142 C152 160 142 176 128 188 C146 194 162 202 172 214 C150 226 124 232 100 236 C76 232 52 226 38 214 C52 202 68 196 76 190 C62 178 52 160 49 142 C48 124 54 108 62 96 C58 80 60 62 66 48 C72 32 84 18 100 12 Z"/>
+        <circle cx="100" cy="120" r="4" fill="#ffffff"/>
+        <path d="M96 116 C98 104 91 96 94 84 C97 72 92 62 96 52" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+        <circle cx="84" cy="88" r="2.4" fill="#ffffff" opacity=".6"/>
+        <circle cx="118" cy="150" r="2.4" fill="#ffffff" opacity=".6"/>
+        <circle cx="76" cy="156" r="2.4" fill="#ffffff" opacity=".6"/>
+      </svg>
+      <div class="info">
+        <b>من الأقصى الشمالي إلى أقصى الجنوب 🇹🇳</b>
+        <p>شبكة المواطنين تتابع حالة الماء في كل ولايات تونس: من طبرقة وجندوبة شمالًا، عبر تونس الكبرى والوطن القبلي والوسط، وصولًا إلى قابس ومدنين وتطاوين صحراءً في الجنوب. بلاغك يصل لجميع زوّار الشبكة أينما كانوا.</p>
+      </div>
+    </div>
+
+    <section class="sec">
+      <div class="sec-head">
+        <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></div>
+        <div><h2>شارك الموقع مع جيرانك</h2><p>كلما انتشرت الشبكة، كلما كانت البلاغات أدقّ</p></div>
+      </div>
+      <div class="share">
+        <button class="wa" onclick="shareWA()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.4-2.5-1.5-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.3 3.1c.2.2 2.2 3.4 5.4 4.8 2.9 1.2 3.6 1 4.2 1 1.3-.2 2-1 2.3-1.4.3-.4.3-.8.2-.9-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg> واتساب</button>
+        <button class="fb" onclick="shareFB()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5H15.2c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg> فيسبوك</button>
+        <button onclick="copyLink()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg> نسخ الرابط</button>
+      </div>
+    </section>
+
+    <div class="disclaimer"><b>⚠️ ملاحظة:</b> هذا الموقع مبادرة مواطنية مستقلة وتُنشر فيه بلاغات الزوّار. الأرقام أعلاه أرقام رسمية للجهات المختصة للتواصل عند الحاجة. البيانات المعروضة تعتمد أساسًا على البلاغات الآتية من المستخدمين ولا تُعتبر تأكيدًا رسميًا.</div>
 
     <div class="tip"><div><strong>💬 شارك في التحديث</strong>توجد منطقتك مقطوعة أو متوفرة؟ أبلغ عنها لمساعدة جيرانك في الحيّ.</div></div>
     <footer class="footer"><span>آخر تحديث: الآن</span><span>🇹🇳 صُنع من أجل تونس</span></footer>
@@ -833,6 +913,22 @@
     function applyThemeIcon() {
       var btn = document.getElementById('themeBtn');
       if (btn) btn.textContent = document.documentElement.getAttribute('data-theme') === 'light' ? '☀️' : '🌙';
+    }
+
+    function siteUrl() { return encodeURIComponent('https://pascorps.github.io/eau-0/'); }
+    function shareWA() {
+      var url = 'https://wa.me/?text=' + encodeURIComponent('تابع حالة الماء في تونس لحظة بلحظة 💧') + ' ' + siteUrl();
+      window.open(url, '_blank'); notify('تم فتح واتساب للمشاركة');
+    }
+    function shareFB() {
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + siteUrl(), '_blank');
+      notify('تم فتح فيسبوك للمشاركة');
+    }
+    function copyLink() {
+      var url = 'https://pascorps.github.io/eau-0/';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => notify('تم نسخ الرابط ✅'), () => notify('الرابط: ' + url));
+      } else { notify('الرابط: ' + url); }
     }
 
     (function makeBubbles() {
