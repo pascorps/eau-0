@@ -28,115 +28,130 @@
   </script>
   <style>
     :root {
-      --bg:#080d11; --surface:#121920; --surface-2:#182129; --line:#2b3740;
-      --text:#ecf4f7; --muted:#82919b; --blue:#17b7f2; --blue-soft:#06394d;
-      --red:#ff6471; --red-soft:#461d25; --yellow:#ffbf55; --green:#42d6b2;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --bg:#0a1410; --surface:#12201a; --surface-2:#182a22; --line:#254035;
+      --text:#eef6f1; --muted:#8ba396; --emerald:#3ddc97; --emerald-soft:#0c3b2a;
+      --amber:#ffcf6b; --amber-soft:#3a2f14; --off:#ff7d6b; --off-soft:#3a201c;
+      --gold:#d9b46a; --gold-soft:#2e2817;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
     }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; color:var(--text); background:var(--bg); overflow-x:hidden; }
-    body:before, body:after { content:""; position:fixed; z-index:-1; border-radius:50%; filter:blur(2px); opacity:.12; pointer-events:none; }
-    body:before { width:430px; height:430px; right:-190px; top:-150px; background:var(--blue); animation: drift 9s ease-in-out infinite alternate; }
-    body:after { width:320px; height:320px; left:-170px; bottom:-130px; background:#0b607b; animation: drift 11s ease-in-out infinite alternate-reverse; }
-    @keyframes drift { to { transform:translate(22px, 18px) scale(1.08); } }
-    @keyframes rise { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes pulse-blue { 0%,100% { box-shadow:0 0 0 0 rgba(23,183,242,.48); } 50% { box-shadow:0 0 0 7px rgba(23,183,242,0); } }
-    @keyframes pulse-red { 0%,100% { box-shadow:0 0 0 0 rgba(255,100,113,.36); } 50% { box-shadow:0 0 0 7px rgba(255,100,113,0); } }
-    .page { width:min(100%, 760px); margin:auto; padding:30px 20px 48px; }
-    .topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:30px; }
-    .brand { display:flex; align-items:center; gap:11px; }
-    .brand-mark { width:36px; height:36px; display:grid; place-items:center; border:1px solid #14627d; border-radius:10px; color:#9ceaff; background:#0c2632; font-size:18px; animation:pulse-blue 3s infinite; }
-    .brand-name { font-weight:800; letter-spacing:-.3px; font-size:16px; }
-    .brand-name span { color:var(--blue); }
-    .brand-sub { display:block; color:var(--muted); font-size:10px; font-weight:500; margin-top:2px; }
+    body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(900px 420px at 85% -10%, rgba(61,220,151,.10), transparent 60%),
+        radial-gradient(700px 380px at -10% 110%, rgba(217,180,106,.08), transparent 60%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.015) 0 1px, transparent 1px 26px); }
+    @keyframes rise { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.35; } }
+    .page { width:min(100%, 780px); margin:auto; padding:28px 18px 48px; position:relative; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand-mark { width:38px; height:38px; display:grid; place-items:center; border-radius:12px;
+      background:linear-gradient(135deg,#0f3d2a,#122f23); color:var(--emerald);
+      box-shadow:inset 0 0 0 1px var(--line), 0 6px 18px rgba(0,0,0,.35); }
+    .brand-mark svg { width:22px; height:22px; }
+    .brand-name { font-weight:800; letter-spacing:.5px; font-size:16px; }
+    .brand-name span { color:var(--emerald); }
+    .brand-sub { display:block; color:var(--muted); font-size:10px; font-weight:500; margin-top:3px; letter-spacing:.4px; text-transform:uppercase; }
     .top-actions { display:flex; align-items:center; gap:8px; }
-    .lang { color:var(--muted); border:1px solid var(--line); background:transparent; border-radius:9px; padding:8px 10px; font-size:11px; }
+    .lang { color:var(--muted); border:1px solid var(--line); background:transparent; border-radius:9px; padding:8px 11px; font-size:11px; }
     .heading { margin-bottom:20px; animation:rise .5s both; }
-    .heading h1 { margin:0; font-size:27px; letter-spacing:-1px; }
-    .heading p { color:var(--muted); margin:6px 0 0; font-size:12px; line-height:1.6; }
-    .water-bar { display:flex; align-items:center; gap:9px; padding:11px 13px; border:1px solid #1d637b; border-radius:12px; background:linear-gradient(90deg,#0e2933,#10212a); margin-bottom:14px; color:#83ddff; font-size:12px; }
-    .water-bar:before { content:""; width:7px; height:7px; border-radius:50%; background:#45ddbd; box-shadow:0 0 0 4px rgba(69,221,189,.12); }
-    .quick-stats { display:grid; grid-template-columns:repeat(3, 1fr); gap:9px; margin-bottom:24px; }
-    .stat { position:relative; overflow:hidden; background:var(--surface); border:1px solid var(--line); border-radius:13px; padding:12px 13px; animation:rise .55s both; }
+    .heading h1 { margin:0; font-size:27px; letter-spacing:-.5px; }
+    .heading p { color:var(--muted); margin:7px 0 0; font-size:12px; line-height:1.7; }
+    .water-bar { display:flex; align-items:center; gap:10px; padding:12px 14px; border:1px solid var(--line); border-radius:12px;
+      background:linear-gradient(90deg,var(--emerald-soft),var(--surface)); margin-bottom:14px; color:#aef2d3; font-size:12px; letter-spacing:.3px; }
+    .water-bar::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--emerald); box-shadow:0 0 0 4px rgba(61,220,151,.14); animation:blink 2.4s infinite; }
+    .quick-stats { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:26px; }
+    .stat { position:relative; overflow:hidden; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 15px; animation:rise .55s both; }
     .stat:nth-child(2) { animation-delay:.08s; } .stat:nth-child(3) { animation-delay:.16s; }
-    .stat:after { content:""; position:absolute; width:55px; height:55px; border-radius:50%; right:-20px; top:-24px; opacity:.12; background:currentColor; }
-    .stat strong { display:block; font-size:22px; letter-spacing:-.5px; }
-    .stat span { display:block; color:var(--muted); font-size:10px; margin-top:2px; }
-    .stat.live { color:var(--green); } .stat.cut { color:var(--red); } .stat.wait { color:var(--yellow); }
-    .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:10px; }
-    .section-head h2 { margin:0; font-size:14px; } .section-head span { color:var(--muted); font-size:10px; }
-    .tools { display:flex; gap:8px; margin-bottom:12px; }
-    .search { flex:1; min-width:0; padding:11px 13px; border:1px solid var(--line); outline:none; border-radius:10px; background:var(--surface); color:var(--text); font-size:12px; }
-    .search::placeholder { color:#687982; } .search:focus { border-color:#197e9f; box-shadow:0 0 0 3px rgba(23,183,242,.09); }
-    .filter { color:var(--text); background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:0 10px; font-size:11px; }
-    .feed { display:flex; flex-direction:column; gap:8px; }
-    .card { display:flex; align-items:center; gap:12px; width:100%; min-height:70px; padding:11px 13px; color:var(--text); text-align:left; border:1px solid var(--line); border-left:3px solid var(--blue); border-radius:13px; background:linear-gradient(100deg, var(--surface), #151e25); cursor:pointer; animation:rise .5s both; transition:transform .22s, border-color .22s, background .22s; }
+    .stat::after { content:""; position:absolute; width:64px; height:64px; border-radius:50%; right:-22px; top:-26px; opacity:.14; background:currentColor; filter:blur(2px); }
+    .stat strong { display:block; font-size:26px; letter-spacing:-.5px; }
+    .stat span { display:block; color:var(--muted); font-size:10px; margin-top:4px; letter-spacing:.4px; text-transform:uppercase; }
+    .stat.live { color:var(--emerald); } .stat.cut { color:var(--off); } .stat.wait { color:var(--amber); }
+    .section-head { display:flex; justify-content:space-between; align-items:end; margin-bottom:11px; }
+    .section-head h2 { margin:0; font-size:14px; letter-spacing:.3px; } .section-head span { color:var(--muted); font-size:10px; }
+    .tools { display:flex; gap:8px; margin-bottom:13px; }
+    .search { flex:1; min-width:0; padding:12px 14px; border:1px solid var(--line); outline:none; border-radius:11px; background:var(--surface); color:var(--text); font-size:12px; }
+    .search::placeholder { color:#6c8579; } .search:focus { border-color:var(--emerald); box-shadow:0 0 0 3px rgba(61,220,151,.10); }
+    .filter { color:var(--text); background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:0 11px; font-size:11px; outline:none; }
+    .feed { display:flex; flex-direction:column; gap:9px; }
+    .card { display:flex; align-items:center; gap:13px; width:100%; min-height:72px; padding:12px 14px; color:var(--text); text-align:left;
+      border:1px solid var(--line); border-radius:15px; background:linear-gradient(100deg,var(--surface),var(--surface-2));
+      cursor:pointer; animation:rise .5s both; transition:transform .22s, border-color .22s, box-shadow .22s; box-shadow:0 2px 10px rgba(0,0,0,.18); }
     .card:nth-child(2) { animation-delay:.05s; } .card:nth-child(3) { animation-delay:.1s; } .card:nth-child(4) { animation-delay:.15s; } .card:nth-child(5) { animation-delay:.2s; } .card:nth-child(6) { animation-delay:.25s; } .card:nth-child(7) { animation-delay:.3s; }
-    .card:hover { transform:translateX(-4px); border-color:#3b5d69; background:var(--surface-2); }
-    .card.bad { border-left-color:var(--red); } .card.wait { border-left-color:var(--yellow); }
-    .card-icon { display:grid; place-items:center; flex:0 0 35px; width:35px; height:35px; border-radius:10px; font-size:15px; background:#06394d; color:#65d9ff; }
-    .bad .card-icon { color:#ff8e98; background:var(--red-soft); animation:pulse-red 3.2s infinite; } .wait .card-icon { color:#ffd176; background:#4b3618; }
+    .card:hover { transform:translateY(-3px); border-color:var(--emerald); box-shadow:0 8px 22px rgba(0,0,0,.28); }
+    .card-icon { position:relative; display:grid; place-items:center; flex:0 0 38px; width:38px; height:38px; border-radius:50%; font-size:0; background:var(--emerald-soft); color:var(--emerald);
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%233ddc97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69 17.66 10a5.4 5.4 0 1 1-11.32 0L12 2.69z"/></svg>');
+      background-repeat:no-repeat; background-position:center; background-size:18px 18px; }
+    .bad .card-icon { color:var(--off); background:var(--off-soft);
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23ff7d6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3l16 16M8.4 3.5C10 7 12 9.7 16 12l-2 4h-4L7 13"/><path d="M4 12c0 4.4 3.6 8 8 8 1.5 0 2.9-.4 4-1"/></svg>');
+      background-repeat:no-repeat; background-position:center; background-size:18px 18px; }
+    .wait .card-icon { color:var(--amber); background:var(--amber-soft);
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%23ffcf6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>');
+      background-repeat:no-repeat; background-position:center; background-size:18px 18px; }
     .card-main { flex:1; min-width:0; }
     .card-title { display:block; font-size:13px; font-weight:750; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .card-meta { display:block; color:var(--muted); font-size:10px; margin-top:5px; }
-    .card-meta b { color:#c0cbd0; font-weight:550; }
-    .card-status { display:flex; align-items:center; gap:5px; flex:none; border-radius:20px; padding:6px 9px; font-size:10px; font-weight:700; white-space:nowrap; }
-    .card-status:before { content:""; width:6px; height:6px; border-radius:50%; background:currentColor; }
-    .card-status.good { color:#5ce6c2; background:#073e3b; } .card-status.bad { color:#ff7d87; background:#4c2029; } .card-status.wait { color:#ffd06b; background:#493719; }
-    .chevron { color:#687983; font-size:18px; transition:.2s; } .card:hover .chevron { color:var(--blue); transform:translateX(-3px); }
-    .tip { display:flex; gap:10px; align-items:flex-start; margin-top:20px; padding:13px 14px; border:1px dashed #28586a; border-radius:12px; background:#0c2029; color:#9cb8c1; font-size:10px; line-height:1.65; }
-    .tip strong { color:#c7eff8; display:block; font-size:11px; margin-bottom:2px; }
-    .footer { display:flex; justify-content:space-between; color:#63757e; font-size:10px; margin-top:25px; padding-top:16px; border-top:1px solid #19252c; }
-    .toast { position:fixed; left:50%; bottom:20px; transform:translate(-50%, 20px); padding:11px 16px; border:1px solid #287d95; border-radius:10px; background:#0c2d39; color:#c9f5ff; font-size:11px; opacity:0; pointer-events:none; transition:.25s; z-index:20; }
+    .card-meta b { color:#cfe0d6; font-weight:600; }
+    .card-status { display:inline-flex; align-items:center; gap:6px; flex:none; border-radius:9px; padding:6px 10px; font-size:10px; font-weight:700; white-space:nowrap; letter-spacing:.3px; }
+    .card-status::before { content:""; width:7px; height:7px; border-radius:2px; background:currentColor; transform:rotate(45deg); }
+    .card-status.good { color:var(--emerald); background:var(--emerald-soft); border:1px solid rgba(61,220,151,.25); }
+    .card-status.bad { color:var(--off); background:var(--off-soft); border:1px solid rgba(255,125,107,.25); }
+    .card-status.wait { color:var(--amber); background:var(--amber-soft); border:1px solid rgba(255,207,107,.25); }
+    .chevron { color:#78907f; font-size:20px; transition:.2s; } .card:hover .chevron { color:var(--emerald); transform:translateX(3px); }
+    .tip { display:flex; gap:11px; align-items:flex-start; margin-top:22px; padding:14px 15px; border:1px dashed var(--line); border-radius:13px; background:#0d1f18; color:#a9c0b3; font-size:10px; line-height:1.7; }
+    .tip strong { color:#d8f3e4; display:block; font-size:11px; margin-bottom:3px; }
+    .footer { display:flex; justify-content:space-between; color:#6c8275; font-size:10px; margin-top:26px; padding-top:16px; border-top:1px solid var(--line); }
+    .toast { position:fixed; left:50%; bottom:20px; transform:translate(-50%, 20px); padding:12px 17px; border:1px solid var(--emerald); border-radius:11px; background:#0d2b1f; color:#d8f8e7; font-size:11px; opacity:0; pointer-events:none; transition:.25s; z-index:20; box-shadow:0 8px 24px rgba(0,0,0,.35); }
     .toast.show { opacity:1; transform:translate(-50%,0); }
-    .admin-btn { color:#ffd176; border:1px solid #5a4a20; background:#1a1508; border-radius:9px; padding:8px 10px; font-size:11px; cursor:pointer; transition:.2s; display:flex; align-items:center; gap:5px; }
-    .admin-btn:hover { background:#2a2310; border-color:#7a6a30; }
-    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.7); backdrop-filter:blur(6px); z-index:100; display:none; align-items:center; justify-content:center; padding:20px; }
+    .admin-btn { color:var(--gold); border:1px solid #4a3d22; background:#1c1910; border-radius:10px; padding:8px 11px; font-size:11px; cursor:pointer; transition:.2s; display:flex; align-items:center; gap:5px; }
+    .admin-btn:hover { background:#2a2414; border-color:#6b5a30; }
+    .modal-overlay { position:fixed; inset:0; background:rgba(4,10,7,.72); backdrop-filter:blur(6px); z-index:100; display:none; align-items:center; justify-content:center; padding:20px; }
     .modal-overlay.show { display:flex; }
-    .modal { width:min(100%, 420px); background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:28px 24px; animation:rise .35s both; }
+    .modal { width:min(100%, 420px); background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:28px 24px; animation:rise .35s both; box-shadow:0 18px 50px rgba(0,0,0,.45); }
     .modal h3 { margin:0 0 6px; font-size:18px; text-align:center; }
     .modal p { margin:0 0 20px; text-align:center; color:var(--muted); font-size:12px; }
     .modal label { display:block; font-size:11px; color:var(--muted); margin-bottom:4px; margin-top:14px; }
-    .modal input, .modal select, .modal textarea { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:9px; background:var(--bg); color:var(--text); font-size:12px; outline:none; }
-    .modal input:focus, .modal select:focus, .modal textarea:focus { border-color:#197e9f; }
+    .modal input, .modal select, .modal textarea { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:var(--bg); color:var(--text); font-size:12px; outline:none; }
+    .modal input:focus, .modal select:focus, .modal textarea:focus { border-color:var(--emerald); }
     .modal textarea { min-height:70px; resize:vertical; }
     .modal-actions { display:flex; gap:8px; margin-top:20px; }
-    .modal-actions button { flex:1; padding:10px; border:none; border-radius:9px; font-size:12px; font-weight:700; cursor:pointer; }
+    .modal-actions button { flex:1; padding:10px; border:none; border-radius:10px; font-size:12px; font-weight:700; cursor:pointer; }
     .btn-cancel { background:var(--line); color:var(--text); }
-    .btn-primary { background:var(--blue); color:#000; }
-    .btn-danger { background:var(--red); color:#fff; }
-    .btn-success { background:var(--green); color:#000; }
+    .btn-primary { background:var(--emerald); color:#04140c; }
+    .btn-danger { background:var(--off); color:#1a0b08; }
+    .btn-success { background:var(--emerald); color:#04140c; }
     .admin-panel { display:none; }
     .admin-panel.show { display:block; }
     .admin-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
-    .admin-header h2 { margin:0; font-size:16px; color:#ffd176; }
-    .admin-badge { padding:4px 10px; border-radius:20px; background:#1a1508; border:1px solid #5a4a20; color:#ffd176; font-size:10px; font-weight:700; }
+    .admin-header h2 { margin:0; font-size:16px; color:var(--gold); }
+    .admin-badge { padding:4px 11px; border-radius:9px; background:#1c1910; border:1px solid #4a3d22; color:var(--gold); font-size:10px; font-weight:700; }
     .admin-tabs { display:flex; gap:6px; margin-bottom:16px; }
-    .admin-tab { padding:7px 14px; border-radius:8px; background:var(--bg); border:1px solid var(--line); color:var(--muted); font-size:11px; cursor:pointer; }
-    .admin-tab.active { background:var(--blue-soft); border-color:var(--blue); color:var(--blue); }
+    .admin-tab { padding:7px 14px; border-radius:9px; background:var(--bg); border:1px solid var(--line); color:var(--muted); font-size:11px; cursor:pointer; }
+    .admin-tab.active { background:var(--emerald-soft); border-color:var(--emerald); color:var(--emerald); }
     .admin-section { display:none; }
     .admin-section.active { display:block; }
     .zone-list { display:flex; flex-direction:column; gap:6px; max-height:300px; overflow-y:auto; }
-    .zone-item { display:flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid var(--line); border-radius:9px; background:var(--bg); font-size:11px; }
+    .zone-item { display:flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid var(--line); border-radius:10px; background:var(--bg); font-size:11px; }
     .zone-item span { flex:1; }
-    .zone-item button { padding:4px 8px; border:1px solid var(--line); border-radius:6px; background:var(--surface); color:var(--text); font-size:10px; cursor:pointer; }
-    .zone-item button.del { color:var(--red); border-color:var(--red-soft); }
-    @media (max-width:560px) { .page { padding:20px 13px 35px; } .topbar { margin-bottom:25px; } .heading h1 { font-size:24px; } .card { min-height:67px; padding:10px; gap:9px; } .card-status { padding:5px 7px; } .card-status:before { display:none; } .quick-stats { gap:6px; } .stat { padding:10px; } }
+    .zone-item button { padding:4px 8px; border:1px solid var(--line); border-radius:7px; background:var(--surface); color:var(--text); font-size:10px; cursor:pointer; }
+    .zone-item button.del { color:var(--off); border-color:var(--off-soft); }
+    @media (max-width:560px) { .page { padding:20px 12px 36px; } .topbar { margin-bottom:25px; } .heading h1 { font-size:24px; } .card { min-height:69px; padding:11px; gap:10px; } .card-status { padding:5px 8px; } .card-status::before { width:6px; height:6px; } .quick-stats { gap:7px; } .stat { padding:11px; } }
   </style>
 </head>
 <body>
   <main class="page">
     <header class="topbar">
-      <div class="brand"><div class="brand-mark">💧</div><div class="brand-name">eau <span>0</span><small class="brand-sub">Tunisie · signalements citoyens</small></div></div>
-      <div class="top-actions"><button class="admin-btn" onclick="showLogin()">⚙ إدارة الموقع</button><span class="lang">عربي</span></div>
+      <div class="brand"><div class="brand-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69 17.66 10a5.4 5.4 0 1 1-11.32 0L12 2.69z"/></svg></div><div class="brand-name">water<span>0</span><small class="brand-sub">Tunisie · réseau citoyen</small></div></div>
+      <div class="top-actions"><button class="admin-btn" onclick="showLogin()">⚙ الإدارة</button><span class="lang">عربي</span></div>
     </header>
 
-    <section class="heading"><h1>eau0 officiel</h1><p>Découvrez l’état de l’eau dans votre quartier, en temps réel.</p></section>
-    <div class="water-bar">💧 Eau · حالة التزويد بالماء فقط</div>
-    <section class="quick-stats"><div class="stat live"><strong id="liveCount">265</strong><span>ça coule</span></div><div class="stat cut"><strong id="cutCount">88</strong><span>Coupée</span></div><div class="stat wait"><strong id="waitCount">22</strong><span>À vérifier</span></div></section>
+    <section class="heading"><h1>شبكة تونس للماء</h1><p>تتبع حالة تزويد الماء في حيّك وفي كل مناطق تونس، لحظة بلحظة.</p></section>
+    <div class="water-bar">حالة تزويد الماء فقط — شبكة التحديثات الحيّة</div>
+    <section class="quick-stats"><div class="stat live"><strong id="liveCount">265</strong><span>ماء متوفر</span></div><div class="stat cut"><strong id="cutCount">88</strong><span>مقطوع</span></div><div class="stat wait"><strong id="waitCount">22</strong><span>قيد التحقق</span></div></section>
 
-    <div class="section-head"><h2>Signalements récents</h2><span id="resultCount">375 zones suivies</span></div>
-    <div class="tools"><input class="search" id="search" placeholder="Rechercher un quartier..." /><select class="filter" id="filter"><option value="all">Tout</option><option value="good">Ça coule</option><option value="bad">Coupée</option><option value="wait">À vérifier</option></select></div>
+    <div class="section-head"><h2>آخر التحديثات</h2><span id="resultCount">375 منطقة متابعة</span></div>
+    <div class="tools"><input class="search" id="search" placeholder="ابحث عن منطقة..." /><select class="filter" id="filter"><option value="all">الكل</option><option value="good">ماء متوفر</option><option value="bad">مقطوع</option><option value="wait">قيد التحقق</option></select></div>
     <section class="feed" id="feed">
 <button class="card" data-name="Bouhsina" data-status="good" data-gov="Sousse"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Bouhsina</span><span class="card-meta">Sousse 💧 <b>2</b> 🚱 <b>1</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
 <button class="card" data-name="Aïn Zaghouan" data-status="good" data-gov="Tunis"><span class="card-icon">💧</span><span class="card-main"><span class="card-title">Aïn Zaghouan</span><span class="card-meta">Tunis 💧 <b>28</b> 🚱 <b>8</b></span></span><span class="card-status good">ça coule</span><span class="chevron">&rsaquo;</span></button>
@@ -556,9 +571,9 @@
       <input type="text" id="zoneName" placeholder="مثال: Bab El Khadhra" />
       <label>الحالة</label>
       <select id="zoneStatus">
-        <option value="good">Ça coule (تعمل)</option>
-        <option value="bad">Coupée (مقطوعة)</option>
-        <option value="wait">À vérifier (تحت التحقق)</option>
+        <option value="good">ماء متوفر</option>
+        <option value="bad">مقطوعة</option>
+        <option value="wait">قيد التحقق</option>
       </select>
       <label>عدد البلاغات</label>
       <input type="number" id="zoneReports" placeholder="0" min="0" />
@@ -598,9 +613,9 @@
         <input type="text" id="zoneName2" placeholder="مثال: Ariana Centre" />
         <label>الحالة</label>
         <select id="zoneStatus2">
-          <option value="good">Ça coule (تعمل)</option>
-          <option value="bad">Coupée (مقطوعة)</option>
-          <option value="wait">À vérifier (تحت التحقق)</option>
+          <option value="good">ماء متوفر</option>
+          <option value="bad">مقطوعة</option>
+          <option value="wait">قيد التحقق</option>
         </select>
         <label>عدد البلاغات</label>
         <input type="number" id="zoneReports2" placeholder="0" min="0" />
@@ -614,9 +629,9 @@
     </div>
     <div class="admin-section" id="tab-stats">
       <div class="quick-stats" style="margin-bottom:16px;">
-        <div class="stat live"><strong id="adminLiveCount">0</strong><span>Ça coule</span></div>
-        <div class="stat cut"><strong id="adminCutCount">0</strong><span>Coupée</span></div>
-        <div class="stat wait"><strong id="adminWaitCount">0</strong><span>À vérifier</span></div>
+        <div class="stat live"><strong id="adminLiveCount">0</strong><span>ماء متوفر</span></div>
+        <div class="stat cut"><strong id="adminCutCount">0</strong><span>مقطوع</span></div>
+        <div class="stat wait"><strong id="adminWaitCount">0</strong><span>قيد التحقق</span></div>
       </div>
       <div style="text-align:center;padding:20px;color:var(--muted);font-size:11px;">
         <p>إجمالي المناطق: <strong id="adminTotalZones" style="color:var(--text);">0</strong></p>
@@ -660,17 +675,17 @@
       const base = BASE[card.dataset.name] || { good: 0, bad: 0 };
       const good = base.good + (v.good || 0);
       const bad = base.bad + (v.bad || 0);
-      card.querySelector('.card-meta').innerHTML = (card.dataset.gov || 'Zone') + ' 💧 <b>' + good + '</b> 🚱 <b>' + bad + '</b>';
+      card.querySelector('.card-meta').innerHTML = (card.dataset.gov || 'Zone') + ' : <b>' + good + '</b> تقارير · <b>' + bad + '</b> انقطاع';
       let status = v.status;
       if (status !== 'good' && status !== 'bad') {
         status = (good + bad) > 0 ? (good >= bad ? 'good' : 'bad') : card.dataset.status;
       }
       card.dataset.status = status;
       card.className = 'card' + (status !== 'good' ? ' ' + status : '');
-      card.querySelector('.card-icon').textContent = status === 'good' ? '💧' : status === 'bad' ? '🚱' : '⏳';
+      card.querySelector('.card-status').textContent = '';
       const el = card.querySelector('.card-status');
       el.className = 'card-status ' + status;
-      el.textContent = status === 'good' ? 'ça coule' : status === 'bad' ? 'coupée' : 'à vérifier';
+      el.textContent = status === 'good' ? 'ماء متوفر' : status === 'bad' ? 'مقطوعة' : 'قيد التحقق';
     }
 
     function submitVote(status) {
@@ -694,7 +709,7 @@
         .then(data => {
           if (data.error) { notify('⚠️ ' + data.error); return; }
           applyVotes(data.votes || {});
-          notify('✅ Merci ' + zone + ' — ' + (status === 'good' ? 'ça coule' : 'coupée'));
+          notify('✅ شكرًا ' + zone + ' — ' + (status === 'good' ? 'ماء متوفر' : 'مقطوعة'));
         })
         .catch(() => { notify('✅ Signalement enregistré (hors connexion)'); });
     }
@@ -868,8 +883,8 @@
       if (!name) { notify('أدخل اسم المنطقة'); return; }
       const status = $('zoneStatus2').value;
       const reports = $('zoneReports2').value || '0';
-      const icons = { good: '💧', bad: '🚱', wait: '⏳' };
-      const labels = { good: 'Ça coule', bad: 'Coupée', wait: 'À vérifier' };
+      const icons = { good: '', bad: '', wait: '' };
+      const labels = { good: 'ماء متوفر', bad: 'مقطوعة', wait: 'قيد التحقق' };
 
       if (editingZoneIndex >= 0) {
         const card = getCards()[editingZoneIndex];
@@ -913,6 +928,20 @@
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('loginModal'); closeModal('addZoneModal'); closeVoteModal(); } });
     $('voteModal').addEventListener('click', e => { if (e.target === $('voteModal')) closeVoteModal(); });
+
+    (function arabize() {
+      document.querySelectorAll('.card').forEach(card => {
+        const s = card.querySelector('.card-status');
+        const status = card.dataset.status;
+        if (s) s.textContent = status === 'good' ? 'ماء متوفر' : status === 'bad' ? 'مقطوعة' : 'قيد التحقق';
+        const meta = card.querySelector('.card-meta');
+        if (meta) {
+          const nums = (meta.textContent.match(/\d+/g) || []).map(Number);
+          const good = nums[0] || 0, bad = nums[1] || 0;
+          meta.textContent = (card.dataset.gov || 'Zone') + ' : ' + good + ' تقارير حضور · ' + bad + ' انقطاع';
+        }
+      });
+    })();
   </script>
 </body>
 </html>
